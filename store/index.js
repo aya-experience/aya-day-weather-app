@@ -8,7 +8,10 @@ const createStore = () => {
     },
     mutations: {
       changeAgencies(state, agencies) {
-        state.agencies = agencies;
+        state.agencies = agencies
+          .sort((agencyA, agencyB) => {
+            return agencyA.weather.currently.cloudCover - agencyB.weather.currently.cloudCover;
+          });
       }
     },
     actions: {
