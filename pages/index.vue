@@ -9,8 +9,8 @@
       </p>
     </div>
     <nav>
-      <a><img src='' alt="Previous"/></a>
-      <a><img src='' alt="Next"/></a>
+      <a href="#"><img src="/fleche_gauche.png" alt="Previous" /></a>
+      <a href="#"><img src="/fleche_droite.png" alt="Next" /></a>
     </nav>
   </div>
 </template>
@@ -22,7 +22,10 @@ export default {
 </script>
 <style scoped>
   #home {
-
+    height: 100vh;
+    width: 100vw;
+    background: url('/static/background.jpg') no-repeat center fixed;
+    background-size: cover;
   }
   #top {
     position: absolute;
@@ -45,12 +48,6 @@ export default {
     position: absolute;
     bottom: 5vw;
     right: 5vw;
-  }
-  nav a {
-    display: inline-block;
-    padding: 25px;
-    border: 1px solid #979797;
-    border-radius: 8px;
   }
   nav a + a {
     margin-left: 25px;
