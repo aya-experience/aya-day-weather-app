@@ -1,6 +1,6 @@
 <template>
     <svg version="1.1" id="Calque_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-        viewBox="0 0 315 353.8" style="enable-background:new 0 0 315 250;" xml:space="preserve">
+        viewBox="0 0 315 250" style="enable-background:new 0 0 315 353.8;" xml:space="preserve">
       <path style="fill:none;stroke:#000000;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;" d="
           M124.5,276.5c0,0,21.5-42.5,7-102s-80-24.5-103-77"/>
       <path style="fill:none;stroke:#000000;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;" d="

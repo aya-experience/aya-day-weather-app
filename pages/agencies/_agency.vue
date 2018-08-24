@@ -1,5 +1,5 @@
 <template>
-  <section>
+  <section :style="weatherGradientMapper[agency.weather.currently.icon]">
     <div class="top">
       <span>19°</span>
       <nav>
@@ -13,10 +13,11 @@
     <h1>{{agency.name}}</h1>
     <h2>35°</h2>
 
+    <img class="weather" :src="weatherIllustrationMapper[agency.weather.currently.icon]" />
+
     <div class="tree">
       <tree />
     </div>
-
 
     <a class="back-to-home" href="#">Back to home</a>
   </section>
@@ -28,6 +29,38 @@ import leftArrow from '../../components/left_arrow.vue';
 import rightArrow from '../../components/right_arrow.vue';
 
 export default {
+  data: () => ({
+    weatherGradientMapper: {
+      'clear-day': 'background: linear-gradient(90deg, #ED4264 0%, #FFEDBC 100%)',
+      'clear-night': 'background: linear-gradient(90deg, #ED4264 0%, #FFEDBC 100%)',
+      rain: 'background: linear-gradient(90deg, #00C6FF 0%, #0072FF 100%)',
+      snow: 'background: linear-gradient(90deg, #00A4CC 0%, #C7FAFF 100%)',
+      sleet: 'background: linear-gradient(90deg, #00A4CC 0%, #C7FAFF 100%)',
+      wind: 'background: linear-gradient(90deg, #4B6CB7 0%, #182848 100%)',
+      hail: 'background: linear-gradient(90deg, #00A4CC 0%, #C7FAFF 100%)',
+      thunderstorm: 'background: linear-gradient(90deg, #4B6CB7 0%, #182848 100%)',
+      tornado: 'background: linear-gradient(90deg, #4B6CB7 0%, #182848 100%)',
+      fog: 'background: linear-gradient(90deg, #2BC0E4 0%, #EAECC6 100%)',
+      cloudy: 'background: linear-gradient(90deg, #2BC0E4 0%, #EAECC6 100%)',
+      'partly-cloudy-day': 'background: linear-gradient(90deg, #70E1F5 0%, #FFD194 100%)',
+      'partly-cloudy-night': 'background: linear-gradient(90deg, #70E1F5 0%, #FFD194 100%)',
+    },
+    weatherIllustrationMapper: {
+      'clear-day': '/sun@1x.png',
+      'clear-night': '/sun@1x.png',
+      rain: '/pluie@1x.png',
+      snow: '/neige@1x.png',
+      sleet: '/neige@1x.png',
+      wind: '/orage@1x.png',
+      hail: '/neige@1x.png',
+      thunderstorm: '/orage@1x.png',
+      tornado: '/orage@1x.png',
+      fog: '/nuageux@1x.png',
+      cloudy: '/nuageux@1x.png',
+      'partly-cloudy-day': '/eclairci@1x.png',
+      'partly-cloudy-night': '/eclairci@1x.png'
+    },
+  }),
   components: {
     tree,
     leftArrow,
@@ -42,6 +75,10 @@ export default {
 </script>
 
 <style scoped>
+section {
+  min-height: 100vh;
+}
+
 .back-to-home {
   position: absolute;
   bottom: 2vw;
@@ -119,5 +156,12 @@ h2 {
 .tree svg {
   width: 100%;
   height: 100%;
+}
+
+.weather {
+  position: absolute;
+  top: 30vh;
+  right: 10vw;
+  width: 15vw;
 }
 </style>
