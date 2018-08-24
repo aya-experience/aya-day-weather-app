@@ -77,132 +77,135 @@ export default {
 }
 </script>
 <style scoped>
-  .winner {
-    height: 80vh;
-    width: 100vw;
-    background: url('/static/background.jpg') no-repeat bottom fixed;
-    background-size: cover;
-    color: white;
-    position: relative;
-  }
+.winner {
+  height: 80vh;
+  width: 100vw;
+  background: url("/static/background.jpg") no-repeat bottom fixed;
+  background-size: cover;
+  color: white;
+  position: relative;
+}
 
-  .top {
-    position: absolute;
-    top: 5vw;
-    left: 5vw;
-  }
-    h1 {
-      margin-bottom: 16px;
-      font-family: Lato;
-      font-size: 70px;
-      font-weight: 300;
-      line-height: 84px;
-    }
-    .top p {
-      font-family: Roboto;
-      font-size: 30px;
-      line-height: 39px;
-    }
+.top {
+  position: absolute;
+  top: 5vw;
+  left: 5vw;
+}
+h1 {
+  margin-bottom: 16px;
+  font-family: Lato;
+  font-size: 70px;
+  font-weight: 300;
+  line-height: 84px;
+}
+.top p {
+  font-family: Roboto;
+  font-size: 30px;
+  line-height: 39px;
+}
 
-  .winnerAgency {
-    display: flex;
-    position: absolute;
-    width: 50vw;
-    bottom: 2vh;
-    right: 5vw;
-    justify-content: space-between;
-    align-items: flex-end;
-  }
-    .winnerAgency-desc {
-      text-align: right;
-      font-family: Roboto;
-      font-size: 22px;
-      line-height: 29px;
-    }
+.winnerAgency {
+  display: flex;
+  position: absolute;
+  width: 50vw;
+  bottom: 2vh;
+  right: 5vw;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+.winnerAgency-desc {
+  text-align: right;
+  font-family: Roboto;
+  font-size: 22px;
+  line-height: 29px;
+}
 
-    .winnerAgency-card {
-      background-color: white;
-      color: black;
-      width: 16vw;
-      height: 22vh;
-      position: relative;
-    }
-      .winnerAgency-card img.winnerAgency-card-king {
-        position: absolute;
-        top: -50px;
-        right: -46px;
-        width: 93px;
-        height: 75px;
-      }
+.winnerAgency-card {
+  background-color: white;
+  color: black;
+  width: 16vw;
+  height: 22vh;
+  position: relative;
+}
+.winnerAgency-card img.winnerAgency-card-king {
+  position: absolute;
+  top: -50px;
+  right: -46px;
+  width: 93px;
+  height: 75px;
+}
 
-      .winnerAgency-card h2 {
-        font-family: Lato;
-        font-size: 45px;
-        font-weight: 300;
-        line-height: 54px;
-        text-align: center;
-      }
+.winnerAgency-card h2 {
+  font-family: Lato;
+  font-size: 45px;
+  font-weight: 300;
+  line-height: 54px;
+  text-align: center;
+}
 
-      .winnerAgency-card p {
-        font-family: Lato;
-        font-size: 45px;
-        font-weight: 300;
-        line-height: 54px;
-        padding-left: 15px;
-        margin-right: 5px;
-      }
-      .winnerAgency-card img {
-        width: 25%;
-        margin-left: 5px;
-      }
+.winnerAgency-card p {
+  font-family: Lato;
+  font-size: 45px;
+  font-weight: 300;
+  line-height: 54px;
+  padding-left: 15px;
+  margin-right: 5px;
+}
+.winnerAgency-card img {
+  width: 25%;
+  margin-left: 5px;
+}
 
-      .winnerAgency-card div {
-        display: flex;
-        justify-content: center;
-        width: 100%;
-        align-items: center;
-      }
+.winnerAgency-card div {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  align-items: center;
+}
 
-      .winnerAgency-data {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
-        align-items: center;
-        height: 100%;
-      }
+.winnerAgency-data {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  height: 100%;
+}
 
-
-  .agencies {
-    display: flex;
-    width: 100vw;
-    height: 20vh;
-    background-color: #000528;
-    justify-content: space-around;
-    align-items: center;
-  }
-    .agencies a {
-      text-decoration: none;
-      color: white;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-    }
-    .agencies h2 {
-      font-family: Lato;
-      font-size: 20px;
-      font-weight: 300;
-      line-height: 24px;
-      text-align: center;
-    }
-    .agencies p {
-      font-family: Lato;
-      font-size: 50px;
-      font-weight: 300;
-      line-height: 60px;
-      text-align: center;
-    }
-    .agencies img {
-      width: 25%;
-    }
+.agencies {
+  display: flex;
+  width: 100vw;
+  height: 20vh;
+  background-color: #000528;
+  justify-content: space-around;
+  align-items: center;
+}
+.agencies a {
+  transition: all 0.2s ease-in-out;
+  text-decoration: none;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.agencies a:hover {
+  transform: scale(1.1);
+}
+.agencies h2 {
+  font-family: Lato;
+  font-size: 20px;
+  font-weight: 300;
+  line-height: 24px;
+  text-align: center;
+}
+.agencies p {
+  font-family: Lato;
+  font-size: 50px;
+  font-weight: 300;
+  line-height: 60px;
+  text-align: center;
+}
+.agencies img {
+  width: 25%;
+}
 </style>
