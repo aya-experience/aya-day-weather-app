@@ -1,17 +1,17 @@
 <template>
   <section :style="weatherGradientMapper[agency.weather.currently.icon]">
     <div class="top">
-      <span>19°</span>
+      <span>{{toCelcius(agency.weather.daily.data[0].temperatureLow)}}°</span>
       <nav>
         <div>
-          <a href="#"><leftArrow /></a>
-          <a href="#"><rightArrow /></a>
+          <nuxt-link :to="previousUrl"><leftArrow /></nuxt-link>
+          <nuxt-link :to="nextUrl"><rightArrow /></nuxt-link>
         </div>
       </nav>
-      <span>35°</span>
+      <span>{{toCelcius(agency.weather.daily.data[0].temperatureHigh)}}°</span>
     </div>
     <h1>{{agency.name}}</h1>
-    <h2>35°</h2>
+    <h2>{{toCelcius(agency.weather.currently.temperature)}}°</h2>
 
     <img class="weather" :src="weatherIllustrationMapper[agency.weather.currently.icon]" />
 
@@ -19,7 +19,7 @@
       <tree />
     </div>
 
-    <a class="back-to-home" href="#">Back to home</a>
+    <nuxt-link class="back-to-home" to="/">Back to home</nuxt-link>
   </section>
 </template>
 
@@ -69,6 +69,21 @@ export default {
   computed: {
     agency() {
       return this.$store.state.agencies.find(agency => agency.name === this.$route.params.agency);
+    },
+    previousUrl() {
+      const currentIndex = this.$store.state.agencies.findIndex(agency => agency.name === this.$route.params.agency);
+      const previousIndex = currentIndex - 1 < 0 ? this.$store.state.agencies.length - 1 : currentIndex - 1;
+      return `/agencies/${this.$store.state.agencies[previousIndex].name}`;
+    },
+    nextUrl() {
+      const currentIndex = this.$store.state.agencies.findIndex(agency => agency.name === this.$route.params.agency);
+      const nextIndex = currentIndex + 1 >= this.$store.state.agencies.length ? 0 : currentIndex + 1;
+      return `/agencies/${this.$store.state.agencies[nextIndex].name}`;
+    }
+  },
+  methods: {
+    toCelcius(f) {
+      return Math.round(((f - 32) / 1.8));
     }
   }
 }
@@ -163,5 +178,14 @@ h2 {
   top: 30vh;
   right: 10vw;
   width: 15vw;
+}
+
+a {
+  opacity: 1;
+  transition: opacity 0.2s ease-in-out;
+}
+
+a:hover {
+  opacity: 0.4;
 }
 </style>
