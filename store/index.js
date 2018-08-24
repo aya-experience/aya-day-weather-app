@@ -14,7 +14,7 @@ const createStore = () => {
     actions: {
       async nuxtServerInit({ commit }) {
         const agencies = await axios.get(
-          "https://aya-day-weather-proxy-cunrbalftb.now.sh/",
+          "http://localhost:8080/",
           { headers: { "Access-Control-Allow-Origin": "*" } }
         );
         commit("changeAgencies", agencies.data);

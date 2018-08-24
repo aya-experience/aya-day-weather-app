@@ -9,7 +9,7 @@
       </p>
     </div>
     <nav>
-      <a href="#"><img src="/fleche_gauche.png" alt="Previous" /></a>
+      <nuxt-link :to="nextAgency"><img src="/fleche_gauche.png" alt="Previous" /></nuxt-link>
       <a href="#"><img src="/fleche_droite.png" alt="Next" /></a>
     </nav>
   </div>
@@ -17,7 +17,11 @@
 
 <script>
 export default {
-
+  computed: {
+    nextAgency() {
+      return `/agencies/${this.$store.state.agencies[0].name}`;
+    }
+  }
 }
 </script>
 <style scoped>
