@@ -105,6 +105,8 @@ section {
   font-size: 20px;
   font-weight: 300;
   line-height: 24px;
+
+  animation: 4s 1 fadeIn ease;
 }
 
 .back-to-home:before {
@@ -122,6 +124,7 @@ section {
   font-family: "Lato", sans-serif;
   font-size: 3vw;
   font-weight: 300;
+  animation: 4s 1 fadeIn ease;
 }
 
 nav {
@@ -132,6 +135,7 @@ nav {
 nav a {
   display: inline-block;
   height: 8vh;
+  animation: 4s 1 fadeIn ease;
 }
 
 nav svg {
@@ -142,6 +146,7 @@ nav svg {
 
 nav a + a {
   margin-left: 25px;
+  animation: 4s 1 fadeIn ease;
 }
 
 h1 {
@@ -150,6 +155,7 @@ h1 {
   font-size: 4vw;
   font-weight: 300;
   text-align: center;
+  animation: 4s 1 fadeIn ease;
 }
 
 h2 {
@@ -158,6 +164,16 @@ h2 {
   font-weight: 300;
   margin-top: 2vh;
   text-align: center;
+  animation: 4s 1 fadeIn ease;
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
 }
 
 .tree {
@@ -178,6 +194,39 @@ h2 {
   top: 30vh;
   right: 10vw;
   width: 15vw;
+  animation: 4s 1 bounceInDown ease;
+}
+
+@keyframes bounceInDown {
+  from,
+  60%,
+  75%,
+  90%,
+  to {
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+  }
+
+  0% {
+    opacity: 0;
+    transform: translate3d(0, -3000px, 0);
+  }
+
+  60% {
+    opacity: 1;
+    transform: translate3d(0, 25px, 0);
+  }
+
+  75% {
+    transform: translate3d(0, -10px, 0);
+  }
+
+  90% {
+    transform: translate3d(0, 5px, 0);
+  }
+
+  to {
+    transform: translate3d(0, 0, 0);
+  }
 }
 
 a {
