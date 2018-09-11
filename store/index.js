@@ -19,8 +19,15 @@ const createStore = () => {
         const agencies = await axios.get(
           "http://localhost:8080/",
           { headers: { "Access-Control-Allow-Origin": "*" } }
-        );
-        commit("changeAgencies", agencies.data);
+        ).catch(error => {
+          // API is unreachable
+          commit("changeAgencies", [])
+        });
+
+        // Check if a value was returned by the API
+        if (agencies != null) {
+          commit("changeAgencies", agencies.data)
+        }
       }
     }
   });
