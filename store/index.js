@@ -27,7 +27,6 @@ const createStore = () => {
     },
     actions: {
       async nuxtServerInit({ commit }) {
-        console.log("------ API URL : ", API_URL);
         const agencies = await axios
           .get(API_URL, {
             headers: { "Access-Control-Allow-Origin": "*" }

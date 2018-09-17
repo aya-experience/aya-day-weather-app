@@ -46,277 +46,311 @@
 </template>
 
 <script>
-  import Error from "./_error";
-  
-  export default {
-    name: "Index",
-    data() {
-      return {
-        weatherIllustrationMapper: {
-          "clear-day": "/sun@1x.png",
-          "clear-night": "/sun@1x.png",
-          rain: "/pluie@1x.png",
-          snow: "/neige@1x.png",
-          sleet: "/neige@1x.png",
-          wind: "/orage@1x.png",
-          hail: "/neige@1x.png",
-          thunderstorm: "/orage@1x.png",
-          tornado: "/orage@1x.png",
-          fog: "/nuageux@1x.png",
-          cloudy: "/nuageux@1x.png",
-          "partly-cloudy-day": "/eclairci@1x.png",
-          "partly-cloudy-night": "/eclairci@1x.png"
-        }
-      };
-    },
-    computed: {
-      winnerAgency() {
-        return this.$store.state.agencies[0];
-      },
-      otherAgencies() {
-        const [, ...otherAgencies] = this.$store.state.agencies;
-        return otherAgencies;
+import Error from "./error";
+
+export default {
+  name: "Index",
+  data() {
+    return {
+      weatherIllustrationMapper: {
+        "clear-day": "/sun@1x.png",
+        "clear-night": "/sun@1x.png",
+        rain: "/pluie@1x.png",
+        snow: "/neige@1x.png",
+        sleet: "/neige@1x.png",
+        wind: "/orage@1x.png",
+        hail: "/neige@1x.png",
+        thunderstorm: "/orage@1x.png",
+        tornado: "/orage@1x.png",
+        fog: "/nuageux@1x.png",
+        cloudy: "/nuageux@1x.png",
+        "partly-cloudy-day": "/eclairci@1x.png",
+        "partly-cloudy-night": "/eclairci@1x.png"
       }
+    };
+  },
+  computed: {
+    winnerAgency() {
+      return this.$store.state.agencies[0];
     },
-    methods: {
-      toCelcius(f) {
-        return Math.round((f - 32) / 1.8);
-      }
-    },
-    components: {
-      Error
+    otherAgencies() {
+      const [, ...otherAgencies] = this.$store.state.agencies;
+      return otherAgencies;
     }
-  };
+  },
+  methods: {
+    toCelcius(f) {
+      return Math.round((f - 32) / 1.8);
+    }
+  },
+  components: {
+    Error
+  }
+};
 </script>
 
 <style scoped>
-  .home {
-    background: url("/static/background.jpg") no-repeat bottom fixed;
-    background-size: cover;
-    color: white;
+.home {
+  background: url("/static/background.jpg") no-repeat bottom fixed;
+  background-size: cover;
+  color: white;
+}
+
+.winner {
+  height: 80vh;
+  width: 100vw;
+  position: relative;
+}
+
+.wrapper-error {
+  width: 100%;
+  height: 100vh;
+}
+
+.top {
+  position: absolute;
+  top: 5vh;
+  left: 5vw;
+  animation: 1s 1 titleapear;
+}
+
+@keyframes titleapear {
+  from {
+    left: -100vw;
   }
-  
-  .winner {
-    height: 80vh;
-    width: 100vw;
-    position: relative;
-  }
-  
-  .wrapper-error {
-    width: 100%;
-    height: 100vh;
-  }
-  
-  .top {
-    position: absolute;
-    top: 5vh;
+  to {
     left: 5vw;
-    animation: 1s 1 titleapear;
   }
-  
-  @keyframes titleapear {
-    from {
-      left: -100vw;
-    }
-    to {
-      left: 5vw;
-    }
+}
+
+h1 {
+  margin-bottom: 16px;
+  font-family: Lato;
+  font-size: 70px;
+  font-weight: 300;
+  line-height: 84px;
+}
+
+.top p {
+  font-family: Roboto;
+  font-size: 30px;
+  line-height: 39px;
+}
+
+.winnerAgency {
+  display: flex;
+  position: absolute;
+  width: 50vw;
+  bottom: 2vh;
+  right: 5vw;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.winnerAgency-desc {
+  text-align: right;
+  font-family: Roboto;
+  font-size: 22px;
+  line-height: 29px;
+  animation: 1.5s 1 winnerAgency-desc-apear;
+}
+
+@keyframes winnerAgency-desc-apear {
+  0% {
+    transform: translateX(100vw);
   }
-  
+  50% {
+    transform: translateX(100vw);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.winnerAgency-card {
+  background-color: white;
+  color: black;
+  width: 16vw;
+  height: 22vh;
+  position: relative;
+  animation: 3s 1 bounceInDown cubic-bezier(0.1, -0.6, 0.2, 0);
+}
+
+@keyframes bounceInDown {
+  from,
+  60%,
+  75%,
+  90%,
+  to {
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+  }
+  0% {
+    opacity: 0;
+    transform: translate3d(0, -3000px, 0);
+  }
+  60% {
+    opacity: 1;
+    transform: translate3d(0, 25px, 0);
+  }
+  75% {
+    transform: translate3d(0, -10px, 0);
+  }
+  90% {
+    transform: translate3d(0, 5px, 0);
+  }
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.winnerAgency-card img.winnerAgency-card-king {
+  position: absolute;
+  top: -50px;
+  right: -46px;
+  width: 93px;
+  height: 75px;
+}
+
+.winnerAgency-card {
+  background-color: white;
+  color: black;
+  width: 16vw;
+  height: 100%;
+  position: relative;
+}
+
+.winnerAgency-card img.winnerAgency-card-king {
+  position: absolute;
+  top: -50px;
+  right: -46px;
+  width: 93px;
+  height: 75px;
+}
+
+.winnerAgency-card h2 {
+  font-family: Lato;
+  font-size: 45px;
+  font-weight: 300;
+  line-height: 54px;
+  text-align: center;
+}
+
+.winnerAgency-card p {
+  font-family: Lato;
+  font-size: 45px;
+  font-weight: 300;
+  line-height: 54px;
+  padding-left: 15px;
+  margin-right: 5px;
+}
+
+.winnerAgency-card img {
+  width: 25%;
+  margin-left: 5px;
+}
+
+.winnerAgency-card div {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  align-items: center;
+}
+
+.winnerAgency-data {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  height: 100%;
+}
+
+.agencies {
+  display: flex;
+  width: 100vw;
+  height: 20vh;
+  background-color: #000528;
+  justify-content: space-around;
+  align-items: center;
+  animation: 2s 1 fadeIn;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  75% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.agencies a {
+  text-decoration: none;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease-in-out;
+}
+
+.agencies a:hover {
+  transform: scale(1.1);
+}
+
+.agencies h2 {
+  font-family: Lato;
+  font-size: 20px;
+  font-weight: 300;
+  line-height: 24px;
+  text-align: center;
+}
+
+.agencies p {
+  font-family: Lato;
+  font-size: 50px;
+  font-weight: 300;
+  line-height: 60px;
+  text-align: center;
+}
+
+.agencies img {
+  width: 25%;
+}
+
+/* Smartphones (portrait) ----------- */
+@media only screen and (max-width: 320px) {
   h1 {
     margin-bottom: 16px;
-    font-family: Lato;
-    font-size: 70px;
-    font-weight: 300;
-    line-height: 84px;
+    font-size: 20px;
   }
-  
+
   .top p {
-    font-family: Roboto;
-    font-size: 30px;
-    line-height: 39px;
+    font-size: 15px;
+    line-height: 20px;
   }
-  
+
+  .winnerAgency-desc {
+    font-size: 15px;
+    line-height: 20px;
+  }
+
   .winnerAgency {
-    display: flex;
-    position: absolute;
-    width: 50vw;
+    width: 90vw;
     bottom: 2vh;
     right: 5vw;
-    justify-content: space-between;
-    align-items: flex-end;
   }
-  
-  .winnerAgency-desc {
-    text-align: right;
-    font-family: Roboto;
-    font-size: 22px;
-    line-height: 29px;
-    animation: 1.5s 1 winnerAgency-desc-apear;
-  }
-  
-  @keyframes winnerAgency-desc-apear {
-    0% {
-      transform: translateX(100vw);
-    }
-    50% {
-      transform: translateX(100vw);
-    }
-    100% {
-      transform: translateX(0);
-    }
-  }
-  
+
   .winnerAgency-card {
-    background-color: white;
-    color: black;
-    width: 16vw;
-    height: 22vh;
-    position: relative;
-    animation: 3s 1 bounceInDown cubic-bezier(0.1, -0.6, 0.2, 0);
-  }
-  
-  @keyframes bounceInDown {
-    from,
-    60%,
-    75%,
-    90%,
-    to {
-      animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    }
-    0% {
-      opacity: 0;
-      transform: translate3d(0, -3000px, 0);
-    }
-    60% {
-      opacity: 1;
-      transform: translate3d(0, 25px, 0);
-    }
-    75% {
-      transform: translate3d(0, -10px, 0);
-    }
-    90% {
-      transform: translate3d(0, 5px, 0);
-    }
-    to {
-      transform: translate3d(0, 0, 0);
-    }
-  }
-  
-  .winnerAgency-card img.winnerAgency-card-king {
-    position: absolute;
-    top: -50px;
-    right: -46px;
-    width: 93px;
-    height: 75px;
-  }
-  
-  .winnerAgency-card {
-    background-color: white;
-    color: black;
-    width: 16vw;
-    height: 22vh;
-    position: relative;
-  }
-  
-  .winnerAgency-card img.winnerAgency-card-king {
-    position: absolute;
-    top: -50px;
-    right: -46px;
-    width: 93px;
-    height: 75px;
-  }
-  
-  .winnerAgency-card h2 {
-    font-family: Lato;
-    font-size: 45px;
-    font-weight: 300;
-    line-height: 54px;
-    text-align: center;
-  }
-  
-  .winnerAgency-card p {
-    font-family: Lato;
-    font-size: 45px;
-    font-weight: 300;
-    line-height: 54px;
-    padding-left: 15px;
-    margin-right: 5px;
-  }
-  
-  .winnerAgency-card img {
-    width: 25%;
-    margin-left: 5px;
-  }
-  
-  .winnerAgency-card div {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    align-items: center;
-  }
-  
-  .winnerAgency-data {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-    height: 100%;
-  }
-  
-  .agencies {
-    display: flex;
     width: 100vw;
-    height: 20vh;
-    background-color: #000528;
-    justify-content: space-around;
-    align-items: center;
-    animation: 2s 1 fadeIn;
+    height: 22vh;
+    position: relative;
   }
-  
-  @keyframes fadeIn {
-    0% {
-      opacity: 0;
-    }
-    75% {
-      opacity: 0;
-    }
-    100% {
-      opacity: 1;
-    }
-  }
-  
-  .agencies a {
-    text-decoration: none;
-    color: white;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.2s ease-in-out;
-  }
-  
-  .agencies a:hover {
-    transform: scale(1.1);
-  }
-  
-  .agencies h2 {
-    font-family: Lato;
-    font-size: 20px;
-    font-weight: 300;
-    line-height: 24px;
-    text-align: center;
-  }
-  
-  .agencies p {
-    font-family: Lato;
-    font-size: 50px;
-    font-weight: 300;
-    line-height: 60px;
-    text-align: center;
-  }
-  
-  .agencies img {
-    width: 25%;
-  }
+}
+
+/* iPads (portrait) ----------- */
+@media only screen and (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) {
+}
 </style>

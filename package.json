@@ -14,10 +14,7 @@
     "test": "ava test/*.test.js"
   },
   "ava": {
-    "verbose": true,
-    "require": [
-      "./test/setup.js"
-    ]
+    "verbose": true
   },
   "dependencies": {
     "axios": "^0.18.0",
