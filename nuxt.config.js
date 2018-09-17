@@ -1,9 +1,13 @@
+const config = {
+  isDev: process.env.NODE_ENV == "dev" ? true : false
+};
+
 module.exports = {
   /*
   ** Headers of the page
   */
   head: {
-    title: "aya-day-weather-app",
+    title: "Aya Weather App",
     meta: [
       { charset: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
@@ -42,5 +46,11 @@ module.exports = {
         });
       }
     }
+  },
+
+  env: {
+    isDev: config.isDev, // True if we are in dev mode, false otherwise
+    baseUrl_dev: "http://localhost:8080", // API URL used in dev
+    baseUrl: "" // Define production API URL
   }
 };

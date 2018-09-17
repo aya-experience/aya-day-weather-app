@@ -1,34 +1,51 @@
 import axios from "axios";
 import Vuex from "vuex";
 
+// localhost URL in dev otherwise prod URL
+const API_URL = process.env.isDev
+  ? process.env.baseUrl_dev
+  : process.env.baseUrl;
+
 const createStore = () => {
   return new Vuex.Store({
     state: {
-      agencies: []
+      agencies: [],
+      error: ""
     },
     mutations: {
       changeAgencies(state, agencies) {
-        state.agencies = agencies
-          .sort((agencyA, agencyB) => {
-            return agencyA.weather.currently.cloudCover - agencyB.weather.currently.cloudCover;
-          });
+        state.agencies = agencies.sort((agencyA, agencyB) => {
+          return (
+            agencyA.weather.currently.cloudCover -
+            agencyB.weather.currently.cloudCover
+          );
+        });
+      },
+      setError(state, error) {
+        state.error = error;
       }
     },
     actions: {
       async nuxtServerInit({ commit }) {
-        const agencies = await axios.get(
-          "http://localhost:8080/",
-          { headers: { "Access-Control-Allow-Origin": "*" } }
-        ).catch(error => {
-          // API is unreachable
-          commit("changeAgencies", [])
-        });
+        console.log("------ API URL : ", API_URL);
+        const agencies = await axios
+          .get(API_URL, {
+            headers: { "Access-Control-Allow-Origin": "*" }
+          })
+          .catch(error => {
+            // API is unreachable, set the error message we received
+            commit("setError", error.message);
+          });
 
-        // Check if a value was returned by the API
+        // Check if data was returned by the API
         if (agencies != null) {
-          commit("changeAgencies", agencies.data)
+          // Save it
+          commit("changeAgencies", agencies.data);
         }
       }
+    },
+    getters: {
+      error: state => state.error
     }
   });
 };
