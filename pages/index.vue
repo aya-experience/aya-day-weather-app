@@ -91,7 +91,7 @@ export default {
 
 <style scoped>
 .home {
-  background: url('/static/background.jpg') no-repeat bottom fixed;
+  background: url('/background.jpg') no-repeat bottom fixed;
   background-size: cover;
   color: white;
 }
