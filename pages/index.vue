@@ -31,7 +31,7 @@
         <article v-for="agency in otherAgencies" :key="agency.name">
           <nuxt-link :to="`/agencies/${agency.name}`" class="agency">
             <h2>{{agency.name}}</h2>
-            <p>{{toCelcius(agency.weather.currently.temperature)}}°</p>
+            <p class="temperature">{{toCelcius(agency.weather.currently.temperature)}}°</p>
             <img :src="weatherIllustrationMapper[agency.weather.currently.icon]" :alt="agency.weather.currently.summary">
           </nuxt-link>
         </article>

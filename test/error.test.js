@@ -23,18 +23,25 @@ test.before('Init Nuxt.js', async t => {
   errorPage = await nuxt.renderAndGetWindow('http://localhost:3002/');
 });
 
-// HTML
-test('[HTML] Verify that an unreachable server displays the right title and subtitle', async t => {
+// Close the nuxt instance once we finish our testing
+test.after('Close Nuxt.js', async t => {
+  nuxt.close();
+});
+
+test('[HTML] should display the right title when the server is unreachable', async t => {
   const errorTitle = errorPage.document.getElementsByTagName('H1')[0];
-  const errorSubtitle = errorPage.document.getElementsByTagName('P')[0];
   t.is(errorTitle.textContent.trim(), 'Uh oh... le serveur est injoignable !');
+});
+
+test('[HTML] should display the right subtitle when the server is unreachable', async t => {
+  const errorSubtitle = errorPage.document.getElementsByTagName('P')[0];
   t.is(
     errorSubtitle.textContent.trim(),
     'Nos ingénieurs travaillent nuit et jour pour régler ce soucis.'
   );
 });
 
-test('[HTML] Verify that an unreachable server displays a detailed error message', async t => {
+test('[HTML] should display a detailed error message when the server is unreachable', async t => {
   const errorDetails = errorPage.document.getElementsByTagName('P')[1];
   t.not(errorDetails.textContent.trim(), '');
 });
