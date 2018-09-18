@@ -2,7 +2,19 @@ const config = {
   isDev: process.env.NODE_ENV == 'dev' ? true : false
 };
 
+// Changes the website's base to work on Github pages
+const routerBase =
+  process.env.DEPLOY_ENV === 'GH_PAGES'
+    ? {
+        router: {
+          base: '/aya-day-weather-app/'
+        }
+      }
+    : {};
+
 module.exports = {
+  ...routerBase,
+
   /*
   ** Headers of the page
   */
