@@ -1,5 +1,5 @@
 <template>
-  <section class="home" v-bind:style="{ backgroundImage: 'url(/background.jpg)' }">
+  <section class="home">
     <section v-if="this.$store.state.agencies.length != 0" class="wrapper-home">
       <section class="winner">
         <section class="top">
@@ -91,7 +91,7 @@ export default {
 
 <style scoped>
 .home {
-  background: no-repeat bottom fixed;
+  background: url('~/static/background.jpg') no-repeat bottom fixed;
   background-size: cover;
   color: white;
 }
