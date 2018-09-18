@@ -11,7 +11,7 @@
       <span>{{toCelcius(agency.weather.daily.data[0].temperatureHigh)}}°</span>
     </div>
     <h1>{{agency.name}}</h1>
-    <h2>{{toCelcius(agency.weather.currently.temperature)}}°</h2>
+           <h2>{{toCelcius(agency.weather.currently.temperature)}}°</h2>
 
     <img class="weather" :src="weatherIllustrationMapper[agency.weather.currently.icon]" />
 
@@ -43,7 +43,7 @@ export default {
       fog: 'background: linear-gradient(90deg, #2BC0E4 0%, #EAECC6 100%)',
       cloudy: 'background: linear-gradient(90deg, #2BC0E4 0%, #EAECC6 100%)',
       'partly-cloudy-day': 'background: linear-gradient(90deg, #70E1F5 0%, #FFD194 100%)',
-      'partly-cloudy-night': 'background: linear-gradient(90deg, #70E1F5 0%, #FFD194 100%)',
+      'partly-cloudy-night': 'background: linear-gradient(90deg, #70E1F5 0%, #FFD194 100%)'
     },
     weatherIllustrationMapper: {
       'clear-day': '/sun@1x.png',
@@ -59,7 +59,7 @@ export default {
       cloudy: '/nuageux@1x.png',
       'partly-cloudy-day': '/eclairci@1x.png',
       'partly-cloudy-night': '/eclairci@1x.png'
-    },
+    }
   }),
   components: {
     tree,
@@ -71,22 +71,28 @@ export default {
       return this.$store.state.agencies.find(agency => agency.name === this.$route.params.agency);
     },
     previousUrl() {
-      const currentIndex = this.$store.state.agencies.findIndex(agency => agency.name === this.$route.params.agency);
-      const previousIndex = currentIndex - 1 < 0 ? this.$store.state.agencies.length - 1 : currentIndex - 1;
+      const currentIndex = this.$store.state.agencies.findIndex(
+        agency => agency.name === this.$route.params.agency
+      );
+      const previousIndex =
+        currentIndex - 1 < 0 ? this.$store.state.agencies.length - 1 : currentIndex - 1;
       return `/agencies/${this.$store.state.agencies[previousIndex].name}`;
     },
     nextUrl() {
-      const currentIndex = this.$store.state.agencies.findIndex(agency => agency.name === this.$route.params.agency);
-      const nextIndex = currentIndex + 1 >= this.$store.state.agencies.length ? 0 : currentIndex + 1;
+      const currentIndex = this.$store.state.agencies.findIndex(
+        agency => agency.name === this.$route.params.agency
+      );
+      const nextIndex =
+        currentIndex + 1 >= this.$store.state.agencies.length ? 0 : currentIndex + 1;
       return `/agencies/${this.$store.state.agencies[nextIndex].name}`;
     }
   },
   methods: {
     toCelcius(f) {
-      return Math.round(((f - 32) / 1.8));
+      return Math.round((f - 32) / 1.8);
     }
   }
-}
+};
 </script>
 
 <style scoped>
@@ -101,7 +107,7 @@ section {
 
   color: black;
   text-decoration: none;
-  font-family: "Lato", sans-serif;
+  font-family: 'Lato', sans-serif;
   font-size: 20px;
   font-weight: 300;
   line-height: 24px;
@@ -110,7 +116,7 @@ section {
 }
 
 .back-to-home:before {
-  content: "<";
+  content: '<';
 }
 
 .top {
@@ -121,7 +127,7 @@ section {
 }
 
 .top span {
-  font-family: "Lato", sans-serif;
+  font-family: 'Lato', sans-serif;
   font-size: 3vw;
   font-weight: 300;
   animation: 4s 1 fadeIn ease;
@@ -151,7 +157,7 @@ nav a + a {
 
 h1 {
   margin-top: 6vh;
-  font-family: "Lato", sans-serif;
+  font-family: 'Lato', sans-serif;
   font-size: 4vw;
   font-weight: 300;
   text-align: center;
@@ -159,7 +165,7 @@ h1 {
 }
 
 h2 {
-  font-family: "Lato", sans-serif;
+  font-family: 'Lato', sans-serif;
   font-size: 8vw;
   font-weight: 300;
   margin-top: 2vh;

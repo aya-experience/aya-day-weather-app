@@ -1,13 +1,13 @@
 <template>
     <section class="wrapper">
         <section class="top">
-            <h1 v-if="this.$store.getters.error != ''">Uh oh... le serveur est injoignable !</h1>
+            <h1 v-if="$store.getters.error != ''">Uh oh... le serveur est injoignable !</h1>
             <h1 v-else>Uh oh... aucune agence trouvée !</h1>
             <p>
                 Nos ingénieurs travaillent nuit et jour pour régler ce soucis.
             </p>
-            <p class="error-details" v-if="this.$store.getters.error != ''">
-                Erreur détaillée: <span>{{this.$store.getters.error}}</span>
+            <p class="error-details" v-if="$store.getters.error != ''">
+                Erreur détaillée: <span>{{$store.getters.error}}</span>
             </p>
         </section>
     </section>
@@ -15,7 +15,7 @@
 
 <script>
 export default {
-  name: "Error"
+  name: 'Error'
 };
 </script>
 

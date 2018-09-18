@@ -1,6 +1,5 @@
 <template>
   <svg width="71px" height="71px" viewBox="0 0 71 71" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-      <!-- Generator: Sketch 51.2 (57519) - http://www.bohemiancoding.com/sketch -->
       <title>fleche droite@svg</title>
       <desc>Created with Sketch.</desc>
       <defs></defs>

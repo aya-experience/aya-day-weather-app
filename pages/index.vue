@@ -1,17 +1,17 @@
 <template>
   <section class="home">
-    <section class="wrapper-home" v-if="this.$store.state.agencies.length != 0">
+    <section v-if="this.$store.state.agencies.length != 0" class="wrapper-home">
       <section class="winner">
         <section class="top">
           <h1>It’s a beautiful Zenday !</h1>
           <p>
-            Pour connaître la meilleure météo <br> aujourd’hui parmi les agences Zenika.
+            Pour connaître la meilleure météo <br/> aujourd’hui parmi les agences Zenika.
           </p>
         </section>
-  
+
         <section class="winnerAgency">
           <p class="winnerAgency-desc">
-            Tout le monde le sait : la météo joue sur l’humeur.<br> Et chez Zenika, nous prenons en considération<br> l’humeur de nos collaborateurs.
+            Tout le monde le sait : la météo joue sur l’humeur.<br/> Et chez Zenika, nous prenons en considération<br/> l’humeur de nos collaborateurs.
           </p>
   
           <article class="winnerAgency-card">
@@ -26,7 +26,7 @@
           </article>
         </section>
       </section>
-  
+
       <section class="agencies">
         <article v-for="agency in otherAgencies" :key="agency.name">
           <nuxt-link :to="`/agencies/${agency.name}`" class="agency">
@@ -46,26 +46,26 @@
 </template>
 
 <script>
-import Error from "./error";
+import Error from './error';
 
 export default {
-  name: "Index",
+  name: 'Index',
   data() {
     return {
       weatherIllustrationMapper: {
-        "clear-day": "/sun@1x.png",
-        "clear-night": "/sun@1x.png",
-        rain: "/pluie@1x.png",
-        snow: "/neige@1x.png",
-        sleet: "/neige@1x.png",
-        wind: "/orage@1x.png",
-        hail: "/neige@1x.png",
-        thunderstorm: "/orage@1x.png",
-        tornado: "/orage@1x.png",
-        fog: "/nuageux@1x.png",
-        cloudy: "/nuageux@1x.png",
-        "partly-cloudy-day": "/eclairci@1x.png",
-        "partly-cloudy-night": "/eclairci@1x.png"
+        'clear-day': '/sun@1x.png',
+        'clear-night': '/sun@1x.png',
+        rain: '/pluie@1x.png',
+        snow: '/neige@1x.png',
+        sleet: '/neige@1x.png',
+        wind: '/orage@1x.png',
+        hail: '/neige@1x.png',
+        thunderstorm: '/orage@1x.png',
+        tornado: '/orage@1x.png',
+        fog: '/nuageux@1x.png',
+        cloudy: '/nuageux@1x.png',
+        'partly-cloudy-day': '/eclairci@1x.png',
+        'partly-cloudy-night': '/eclairci@1x.png'
       }
     };
   },
@@ -91,7 +91,7 @@ export default {
 
 <style scoped>
 .home {
-  background: url("/static/background.jpg") no-repeat bottom fixed;
+  background: url('/static/background.jpg') no-repeat bottom fixed;
   background-size: cover;
   color: white;
 }

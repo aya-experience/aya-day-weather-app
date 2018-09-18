@@ -1,0 +1,6 @@
+/dist
+/node_modules
+./.nuxt/*
+/test
+/store
+nuxt.config.js
