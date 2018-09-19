@@ -68,8 +68,8 @@ export default {
         fog: '/nuageux@1x.png',
         cloudy: '/nuageux@1x.png',
         'partly-cloudy-day': '/eclairci@1x.png',
-        'partly-cloudy-night': '/eclairci@1x.png'
-      }
+        'partly-cloudy-night': '/eclairci@1x.png',
+      },
     };
   },
   computed: {
@@ -79,36 +79,32 @@ export default {
     otherAgencies() {
       const [, ...otherAgencies] = this.$store.state.agencies;
       return otherAgencies;
-    }
+    },
   },
   methods: {
     toCelcius(f) {
       return Math.round((f - 32) / 1.8);
-    }
+    },
   },
   components: {
-    Error
+    Error,
   },
   async fetch({ store, params }) {
-    console.log('------ Calling fetch');
     const agencies = await axios
       .get(API_URL, {
-        headers: { 'Access-Control-Allow-Origin': '*' }
+        headers: { 'Access-Control-Allow-Origin': '*' },
       })
-      .catch(error => {
-        console.log('------ Calling fetch ERROR, ', error);
+      .catch((error) => {
         // API is unreachable, set the error message we received
         store.commit('setError', error.message);
       });
-
-    console.log('------ Calling fetch GOT, ', agencies);
 
     // Check if data was returned by the API
     if (agencies != null) {
       // Save it
       store.commit('changeAgencies', agencies.data);
     }
-  }
+  },
 };
 </script>
 

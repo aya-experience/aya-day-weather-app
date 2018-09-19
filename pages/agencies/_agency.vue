@@ -43,7 +43,7 @@ export default {
       fog: 'background: linear-gradient(90deg, #2BC0E4 0%, #EAECC6 100%)',
       cloudy: 'background: linear-gradient(90deg, #2BC0E4 0%, #EAECC6 100%)',
       'partly-cloudy-day': 'background: linear-gradient(90deg, #70E1F5 0%, #FFD194 100%)',
-      'partly-cloudy-night': 'background: linear-gradient(90deg, #70E1F5 0%, #FFD194 100%)'
+      'partly-cloudy-night': 'background: linear-gradient(90deg, #70E1F5 0%, #FFD194 100%)',
     },
     weatherIllustrationMapper: {
       'clear-day': '/sun@1x.png',
@@ -58,21 +58,21 @@ export default {
       fog: '/nuageux@1x.png',
       cloudy: '/nuageux@1x.png',
       'partly-cloudy-day': '/eclairci@1x.png',
-      'partly-cloudy-night': '/eclairci@1x.png'
-    }
+      'partly-cloudy-night': '/eclairci@1x.png',
+    },
   }),
   components: {
     tree,
     leftArrow,
-    rightArrow
+    rightArrow,
   },
   computed: {
     agency() {
-      return this.$store.state.agencies.find(agency => agency.name === this.$route.params.agency);
+      return this.$store.state.agencies.find((agency) => agency.name === this.$route.params.agency);
     },
     previousUrl() {
       const currentIndex = this.$store.state.agencies.findIndex(
-        agency => agency.name === this.$route.params.agency
+        (agency) => agency.name === this.$route.params.agency,
       );
       const previousIndex =
         currentIndex - 1 < 0 ? this.$store.state.agencies.length - 1 : currentIndex - 1;
@@ -80,18 +80,18 @@ export default {
     },
     nextUrl() {
       const currentIndex = this.$store.state.agencies.findIndex(
-        agency => agency.name === this.$route.params.agency
+        (agency) => agency.name === this.$route.params.agency,
       );
       const nextIndex =
         currentIndex + 1 >= this.$store.state.agencies.length ? 0 : currentIndex + 1;
       return `/agencies/${this.$store.state.agencies[nextIndex].name}`;
-    }
+    },
   },
   methods: {
     toCelcius(f) {
       return Math.round((f - 32) / 1.8);
-    }
-  }
+    },
+  },
 };
 </script>
 

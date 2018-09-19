@@ -12,7 +12,7 @@ let nuxt = null;
 let homePage = null;
 
 // Init Nuxt.js and start listening on localhost:3000
-test.before('Init Nuxt.js', async t => {
+test.before('Init Nuxt.js', async () => {
   const rootDir = resolve(__dirname, '..');
   let config = {};
   try {
@@ -28,28 +28,28 @@ test.before('Init Nuxt.js', async t => {
 });
 
 // Close the nuxt instance once we finish our testing
-test.after('Close Nuxt.js', async t => {
+test.after('Close Nuxt.js', async () => {
   nuxt.close();
 });
 
-test('[API] should display a list of agencies', async t => {
+test('[API] should display a list of agencies', async (t) => {
   const agencyList = homePage.document.getElementsByClassName('agency');
   for (var i = 0; i < agencyList.length; i++) {
     t.not(agencyList[i], null);
   }
 });
 
-test('[API] should display exactly 8 agencies', async t => {
+test('[API] should display exactly 8 agencies', async (t) => {
   const agencyList = homePage.document.getElementsByClassName('agency');
   t.is(agencyList.length, 8);
 });
 
-test('[API] should display data in the winner agency card', async t => {
+test('[API] should display data in the winner agency card', async (t) => {
   const winnerAgency = homePage.document.querySelector('.winnerAgency-data');
   t.not(winnerAgency, null);
 });
 
-test('[API] should display a valid temperature value', async t => {
+test('[API] should display a valid temperature value', async (t) => {
   var temperature = homePage.document.querySelector('.temperature').textContent;
   // Remove the ° sign
   temperature = temperature.slice(0, -1);
@@ -59,12 +59,12 @@ test('[API] should display a valid temperature value', async t => {
   t.is(typeof !isNaN(parseFloat(temperature)) && !isNaN(temperature - 0), true);
 });
 
-test('[HTML] should display the correct title on the main page', async t => {
+test('[HTML] should display the correct title on the main page', async (t) => {
   const pageTitle = homePage.document.getElementsByTagName('H1')[0];
   t.is(pageTitle.textContent, 'It’s a beautiful Zenday !');
 });
 
-test('[HTML] should display the correct subtitle on the main page', async t => {
+test('[HTML] should display the correct subtitle on the main page', async (t) => {
   const pageSubtitle = homePage.document.getElementsByTagName('P')[0];
   t.is(
     pageSubtitle.textContent.trim(),
@@ -72,13 +72,13 @@ test('[HTML] should display the correct subtitle on the main page', async t => {
   );
 });
 
-test('[HTML] should display the correct background image', async t => {
+test('[HTML] should display the correct background image', async (t) => {
   const backgroundImage = homePage.document.querySelector('.home');
   const elementStyle = homePage.getComputedStyle(backgroundImage);
   t.not('', elementStyle.getPropertyValue('background-image'));
 });
 
-test('[ROUTING] should be on the correct URL path', async t => {
+test('[ROUTING] should be on the correct URL path', async (t) => {
   const currentPath = homePage.location.pathname;
   t.is(currentPath, '/');
 });

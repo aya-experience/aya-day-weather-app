@@ -7,7 +7,7 @@ let errorPage = null;
 
 // Init Nuxt.js and start listening on localhost:3002
 // Init Nuxt.js with the wrong API URL to reach an error page
-test.before('Init Nuxt.js', async t => {
+test.before('Init Nuxt.js', async () => {
   const rootDir = resolve(__dirname, '..');
   let config = {};
   try {
@@ -24,16 +24,16 @@ test.before('Init Nuxt.js', async t => {
 });
 
 // Close the nuxt instance once we finish our testing
-test.after('Close Nuxt.js', async t => {
+test.after('Close Nuxt.js', async () => {
   nuxt.close();
 });
 
-test('[HTML] should display the right title when the server is unreachable', async t => {
+test('[HTML] should display the right title when the server is unreachable', async (t) => {
   const errorTitle = errorPage.document.getElementsByTagName('H1')[0];
   t.is(errorTitle.textContent.trim(), 'Uh oh... le serveur est injoignable !');
 });
 
-test('[HTML] should display the right subtitle when the server is unreachable', async t => {
+test('[HTML] should display the right subtitle when the server is unreachable', async (t) => {
   const errorSubtitle = errorPage.document.getElementsByTagName('P')[0];
   t.is(
     errorSubtitle.textContent.trim(),
@@ -41,7 +41,7 @@ test('[HTML] should display the right subtitle when the server is unreachable', 
   );
 });
 
-test('[HTML] should display a detailed error message when the server is unreachable', async t => {
+test('[HTML] should display a detailed error message when the server is unreachable', async (t) => {
   const errorDetails = errorPage.document.getElementsByTagName('P')[1];
   t.not(errorDetails.textContent.trim(), '');
 });

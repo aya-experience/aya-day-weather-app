@@ -1,8 +1,8 @@
 const config = {
   // True when in dev mode
-  isDev: process.env.NODE_ENV == 'dev' ? true : false,
+  isDev: process.env.NODE_ENV === 'dev' ? true : false,
   // Changes the website's base to work on Github pages
-  routerBase: process.env.NODE_ENV == 'gh_pages' ? '/aya-day-weather-app/' : '/'
+  routerBase: process.env.NODE_ENV === 'gh_pages' ? '/aya-day-weather-app/' : '/'
 };
 
 module.exports = {
