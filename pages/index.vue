@@ -1,48 +1,50 @@
 <template>
-  <section class="home">
-    <section v-if="this.$store.state.agencies.length != 0" class="wrapper-home">
-      <section class="winner">
-        <section class="top">
-          <h1>It’s a beautiful Zenday !</h1>
-          <p>
-            Pour connaître la meilleure météo <br/> aujourd’hui parmi les agences Zenika.
-          </p>
-        </section>
-
-        <section class="winnerAgency">
-          <p class="winnerAgency-desc">
-            Tout le monde le sait : la météo joue sur l’humeur.<br/> Et chez Zenika, nous prenons en considération<br/> l’humeur de nos collaborateurs.
-          </p>
+  <no-ssr placeholder="Chargement...">
+    <section class="home">
+      <section v-if="this.$store.state.agencies.length != 0" class="wrapper-home">
+        <section class="winner">
+          <section class="top">
+            <h1>It’s a beautiful Zenday !</h1>
+            <p>
+              Pour connaître la meilleure météo <br/> aujourd’hui parmi les agences Zenika.
+            </p>
+          </section>
   
-          <article class="winnerAgency-card">
-            <section class="winnerAgency-data">
-              <h2>{{winnerAgency.name}}</h2>
-              <div>
-                <p>{{toCelcius(winnerAgency.weather.currently.temperature)}}°</p>
-                <img :src="weatherIllustrationMapper[winnerAgency.weather.currently.icon]" :alt="winnerAgency.weather.currently.summary">
-              </div>
-            </section>
-            <img src="/couronne@svg.svg" class="winnerAgency-card-king" alt="winner">
+          <section class="winnerAgency">
+            <p class="winnerAgency-desc">
+              Tout le monde le sait : la météo joue sur l’humeur.<br/> Et chez Zenika, nous prenons en considération<br/> l’humeur de nos collaborateurs.
+            </p>
+  
+            <article class="winnerAgency-card">
+              <section class="winnerAgency-data">
+                <h2>{{winnerAgency.name}}</h2>
+                <div>
+                  <p>{{toCelcius(winnerAgency.weather.currently.temperature)}}°</p>
+                  <img :src="weatherIllustrationMapper[winnerAgency.weather.currently.icon]" :alt="winnerAgency.weather.currently.summary">
+                </div>
+              </section>
+              <img src="/couronne@svg.svg" class="winnerAgency-card-king" alt="winner">
+            </article>
+          </section>
+        </section>
+  
+        <section class="agencies">
+          <article v-for="agency in otherAgencies" :key="agency.name">
+            <nuxt-link :to="`/agencies/${agency.name}`" class="agency">
+              <h2>{{agency.name}}</h2>
+              <p class="temperature">{{toCelcius(agency.weather.currently.temperature)}}°</p>
+              <img :src="weatherIllustrationMapper[agency.weather.currently.icon]" :alt="agency.weather.currently.summary">
+            </nuxt-link>
           </article>
         </section>
       </section>
-
-      <section class="agencies">
-        <article v-for="agency in otherAgencies" :key="agency.name">
-          <nuxt-link :to="`/agencies/${agency.name}`" class="agency">
-            <h2>{{agency.name}}</h2>
-            <p class="temperature">{{toCelcius(agency.weather.currently.temperature)}}°</p>
-            <img :src="weatherIllustrationMapper[agency.weather.currently.icon]" :alt="agency.weather.currently.summary">
-          </nuxt-link>
-        </article>
+  
+      <!-- Only displayed when the API could not be reached -->
+      <section class="wrapper-error" v-else>
+        <Error/>
       </section>
     </section>
-  
-    <!-- Only displayed when the API could not be reached -->
-    <section class="wrapper-error" v-else>
-      <Error/>
-    </section>
-  </section>
+  </no-ssr>
 </template>
 
 <script>
@@ -321,28 +323,25 @@ h1 {
 }
 
 /* Smartphones (portrait) ----------- */
+
 @media only screen and (max-width: 320px) {
   h1 {
     margin-bottom: 16px;
     font-size: 20px;
   }
-
   .top p {
     font-size: 15px;
     line-height: 20px;
   }
-
   .winnerAgency-desc {
     font-size: 15px;
     line-height: 20px;
   }
-
   .winnerAgency {
     width: 90vw;
     bottom: 2vh;
     right: 5vw;
   }
-
   .winnerAgency-card {
     width: 100vw;
     height: 22vh;
@@ -351,6 +350,7 @@ h1 {
 }
 
 /* iPads (portrait) ----------- */
+
 @media only screen and (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) {
 }
 </style>
