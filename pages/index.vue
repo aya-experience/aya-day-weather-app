@@ -1,54 +1,55 @@
 <template>
-  <no-ssr placeholder="Chargement...">
-    <section class="home">
-      <section v-if="this.$store.state.agencies.length != 0" class="wrapper-home">
-        <section class="winner">
-          <section class="top">
-            <h1>It’s a beautiful Zenday !</h1>
-            <p>
-              Pour connaître la meilleure météo <br/> aujourd’hui parmi les agences Zenika.
-            </p>
-          </section>
-  
-          <section class="winnerAgency">
-            <p class="winnerAgency-desc">
-              Tout le monde le sait : la météo joue sur l’humeur.<br/> Et chez Zenika, nous prenons en considération<br/> l’humeur de nos collaborateurs.
-            </p>
-  
-            <article class="winnerAgency-card">
-              <section class="winnerAgency-data">
-                <h2>{{winnerAgency.name}}</h2>
-                <div>
-                  <p>{{toCelcius(winnerAgency.weather.currently.temperature)}}°</p>
-                  <img :src="weatherIllustrationMapper[winnerAgency.weather.currently.icon]" :alt="winnerAgency.weather.currently.summary">
-                </div>
-              </section>
-              <img src="/couronne@svg.svg" class="winnerAgency-card-king" alt="winner">
-            </article>
-          </section>
+  <section class="home">
+    <section v-if="this.$store.state.agencies.length != 0" class="wrapper-home">
+      <section class="winner">
+        <section class="top">
+          <h1>It’s a beautiful Zenday !</h1>
+          <p>
+            Pour connaître la meilleure météo <br/> aujourd’hui parmi les agences Zenika.
+          </p>
         </section>
   
-        <section class="agencies">
-          <article v-for="agency in otherAgencies" :key="agency.name">
-            <nuxt-link :to="`/agencies/${agency.name}`" class="agency">
-              <h2>{{agency.name}}</h2>
-              <p class="temperature">{{toCelcius(agency.weather.currently.temperature)}}°</p>
-              <img :src="weatherIllustrationMapper[agency.weather.currently.icon]" :alt="agency.weather.currently.summary">
-            </nuxt-link>
+        <section class="winnerAgency">
+          <p class="winnerAgency-desc">
+            Tout le monde le sait : la météo joue sur l’humeur.<br/> Et chez Zenika, nous prenons en considération<br/> l’humeur de nos collaborateurs.
+          </p>
+  
+          <article class="winnerAgency-card">
+            <section class="winnerAgency-data">
+              <h2>{{winnerAgency.name}}</h2>
+              <div>
+                <p>{{toCelcius(winnerAgency.weather.currently.temperature)}}°</p>
+                <img :src="weatherIllustrationMapper[winnerAgency.weather.currently.icon]" :alt="winnerAgency.weather.currently.summary">
+              </div>
+            </section>
+            <img src="/couronne@svg.svg" class="winnerAgency-card-king" alt="winner">
           </article>
         </section>
       </section>
   
-      <!-- Only displayed when the API could not be reached -->
-      <section class="wrapper-error" v-else>
-        <Error/>
+      <section class="agencies">
+        <article v-for="agency in otherAgencies" :key="agency.name">
+          <nuxt-link :to="`/agencies/${agency.name}`" class="agency">
+            <h2>{{agency.name}}</h2>
+            <p class="temperature">{{toCelcius(agency.weather.currently.temperature)}}°</p>
+            <img :src="weatherIllustrationMapper[agency.weather.currently.icon]" :alt="agency.weather.currently.summary">
+          </nuxt-link>
+        </article>
       </section>
     </section>
-  </no-ssr>
+  
+    <!-- Only displayed when the API could not be reached -->
+    <section class="wrapper-error" v-else>
+      <Error/>
+    </section>
+  </section>
 </template>
 
 <script>
+import axios from 'axios';
 import Error from './error';
+
+const API_URL = process.env.isDev ? process.env.baseUrl_dev : process.env.baseUrl;
 
 export default {
   name: 'Index',
@@ -87,6 +88,26 @@ export default {
   },
   components: {
     Error
+  },
+  async fetch({ store, params }) {
+    console.log('------ Calling fetch');
+    const agencies = await axios
+      .get(API_URL, {
+        headers: { 'Access-Control-Allow-Origin': '*' }
+      })
+      .catch(error => {
+        console.log('------ Calling fetch ERROR, ', error);
+        // API is unreachable, set the error message we received
+        store.commit('setError', error.message);
+      });
+
+    console.log('------ Calling fetch GOT, ', agencies);
+
+    // Check if data was returned by the API
+    if (agencies != null) {
+      // Save it
+      store.commit('changeAgencies', agencies.data);
+    }
   }
 };
 </script>
