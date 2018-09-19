@@ -1,8 +1,8 @@
-const config = {
+const configs = {
   // True when in dev mode
-  isDev: process.env.NODE_ENV === 'dev' ? true : false,
+  isDev: process.env.NODE_ENV === 'dev',
   // Changes the website's base to work on Github pages
-  routerBase: process.env.NODE_ENV === 'gh_pages' ? '/aya-day-weather-app/' : '/'
+  routerBase: process.env.NODE_ENV === 'gh_pages' ? '/aya-day-weather-app/' : '/',
 };
 
 module.exports = {
@@ -14,19 +14,19 @@ module.exports = {
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: 'Nuxt.js project' }
+      { hid: 'description', name: 'description', content: 'Nuxt.js project' },
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
       {
         rel: 'stylesheet',
-        href: 'https://fonts.googleapis.com/css?family=Lato:300,400'
+        href: 'https://fonts.googleapis.com/css?family=Lato:300,400',
       },
       {
         rel: 'stylesheet',
-        href: 'https://fonts.googleapis.com/css?family=Roboto'
-      }
-    ]
+        href: 'https://fonts.googleapis.com/css?family=Roboto',
+      },
+    ],
   },
   /*
   ** Customize the progress bar color
@@ -46,21 +46,18 @@ module.exports = {
           test: /\.(js|vue)$/,
           loader: 'eslint-loader',
           exclude: /(node_modules)/,
-          options: {
-            formatter: require('eslint-friendly-formatter')
-          }
         });
       }
-    }
+    },
   },
 
   env: {
-    isDev: config.isDev, // True if we are in dev mode, false otherwise
+    isDev: configs.isDev, // True if we are in dev mode, false otherwise
     baseUrl_dev: 'http://localhost:8080', // API URL used in dev
-    baseUrl: 'http://localhost:8080' // Define production API URL
+    baseUrl: 'http://localhost:8080', // Define production API URL
   },
 
   router: {
-    base: config.routerBase
-  }
+    base: configs.routerBase,
+  },
 };

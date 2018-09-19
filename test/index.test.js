@@ -15,9 +15,7 @@ let homePage = null;
 test.before('Init Nuxt.js', async () => {
   const rootDir = resolve(__dirname, '..');
   let config = {};
-  try {
-    config = require(resolve(rootDir, 'nuxt.config.js'));
-  } catch (e) {}
+  config = require(resolve(rootDir, 'nuxt.config.js'));
   config.rootDir = rootDir; // project folder
   config.env.isDev = true; // dev build
   config.mode = 'universal'; // Isomorphic application
@@ -34,7 +32,7 @@ test.after('Close Nuxt.js', async () => {
 
 test('[API] should display a list of agencies', async (t) => {
   const agencyList = homePage.document.getElementsByClassName('agency');
-  for (var i = 0; i < agencyList.length; i++) {
+  for (let i = 0; i < agencyList.length; i += 1) {
     t.not(agencyList[i], null);
   }
 });
@@ -50,13 +48,13 @@ test('[API] should display data in the winner agency card', async (t) => {
 });
 
 test('[API] should display a valid temperature value', async (t) => {
-  var temperature = homePage.document.querySelector('.temperature').textContent;
+  let temperature = homePage.document.querySelector('.temperature').textContent;
   // Remove the ° sign
   temperature = temperature.slice(0, -1);
   // Convert to Int
-  temperature = parseInt(temperature);
+  temperature = parseInt(temperature, 10);
   // Check if the value is a valid number
-  t.is(typeof !isNaN(parseFloat(temperature)) && !isNaN(temperature - 0), true);
+  t.is(typeof !Number.isNaN(parseFloat(temperature)) && !Number.isNaN(temperature - 0), true);
 });
 
 test('[HTML] should display the correct title on the main page', async (t) => {
@@ -68,7 +66,7 @@ test('[HTML] should display the correct subtitle on the main page', async (t) =>
   const pageSubtitle = homePage.document.getElementsByTagName('P')[0];
   t.is(
     pageSubtitle.textContent.trim(),
-    'Pour connaître la meilleure météo  aujourd’hui parmi les agences Zenika.'
+    'Pour connaître la meilleure météo  aujourd’hui parmi les agences Zenika.',
   );
 });
 

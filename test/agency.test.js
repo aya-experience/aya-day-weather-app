@@ -11,9 +11,7 @@ let agencyPage = null;
 test.before('Init Nuxt.js', async () => {
   const rootDir = resolve(__dirname, '..');
   let config = {};
-  try {
-    config = require(resolve(rootDir, 'nuxt.config.js'));
-  } catch (e) {}
+  config = require(resolve(rootDir, 'nuxt.config.js'));
   config.rootDir = rootDir; // project folder
   config.env.isDev = true; // dev build
   config.mode = 'universal'; // Isomorphic application
@@ -34,31 +32,31 @@ test('[ROUTING] should display the correct city name in /agencies/Paris', async 
 });
 
 test('[HTML] should display a valid temperature in /agencies/Paris', async (t) => {
-  var temperature = agencyPage.document.getElementsByTagName('H2')[0].textContent;
+  let temperature = agencyPage.document.getElementsByTagName('H2')[0].textContent;
   // Remove the ° sign
   temperature = temperature.slice(0, -1);
   // Convert to Int
-  temperature = parseInt(temperature);
+  temperature = parseInt(temperature, 10);
   // Check if the value is a valid number
-  t.is(typeof !isNaN(parseFloat(temperature)) && !isNaN(temperature - 0), true);
+  t.is(typeof !Number.isNaN(parseFloat(temperature)) && !Number.isNaN(temperature - 0), true);
 });
 
 test('[HTML] should display a valid previous temperature in /agencies/Paris', async (t) => {
-  var temperature = agencyPage.document.getElementsByTagName('SPAN')[0].textContent;
+  let temperature = agencyPage.document.getElementsByTagName('SPAN')[0].textContent;
   // Remove the ° sign
   temperature = temperature.slice(0, -1);
   // Convert to Int
-  temperature = parseInt(temperature);
+  temperature = parseInt(temperature, 10);
   // Check if the value is a valid number
-  t.is(typeof !isNaN(parseFloat(temperature)) && !isNaN(temperature - 0), true);
+  t.is(typeof !Number.isNaN(parseFloat(temperature)) && !Number.isNaN(temperature - 0), true);
 });
 
 test('[HTML] should display a valid next temperature in /agencies/Paris', async (t) => {
-  var temperature = agencyPage.document.getElementsByTagName('SPAN')[1].textContent;
+  let temperature = agencyPage.document.getElementsByTagName('SPAN')[1].textContent;
   // Remove the ° sign
   temperature = temperature.slice(0, -1);
   // Convert to Int
-  temperature = parseInt(temperature);
+  temperature = parseInt(temperature, 10);
   // Check if the value is a valid number
-  t.is(typeof !isNaN(parseFloat(temperature)) && !isNaN(temperature - 0), true);
+  t.is(typeof !Number.isNaN(parseFloat(temperature)) && !Number.isNaN(temperature - 0), true);
 });

@@ -10,9 +10,7 @@ let errorPage = null;
 test.before('Init Nuxt.js', async () => {
   const rootDir = resolve(__dirname, '..');
   let config = {};
-  try {
-    config = require(resolve(rootDir, 'nuxt.config.js'));
-  } catch (e) {}
+  config = require(resolve(rootDir, 'nuxt.config.js'));
   config.rootDir = rootDir; // project folder
   config.env.isDev = false; // prod build
   config.env.baseUrl = ''; // Set a false API URL
@@ -37,7 +35,7 @@ test('[HTML] should display the right subtitle when the server is unreachable', 
   const errorSubtitle = errorPage.document.getElementsByTagName('P')[0];
   t.is(
     errorSubtitle.textContent.trim(),
-    'Nos ingénieurs travaillent nuit et jour pour régler ce soucis.'
+    'Nos ingénieurs travaillent nuit et jour pour régler ce soucis.',
   );
 });
 

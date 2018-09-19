@@ -8,7 +8,7 @@ const createStore = () => {
   return new Vuex.Store({
     state: {
       agencies: [],
-      error: ''
+      error: '',
     },
     mutations: {
       changeAgencies(state, agencies) {
@@ -18,15 +18,15 @@ const createStore = () => {
       },
       setError(state, error) {
         state.error = error;
-      }
+      },
     },
     actions: {
       async nuxtServerInit({ commit }) {
         const agencies = await axios
           .get(API_URL, {
-            headers: { 'Access-Control-Allow-Origin': '*' }
+            headers: { 'Access-Control-Allow-Origin': '*' },
           })
-          .catch(error => {
+          .catch((error) => {
             // API is unreachable, set the error message we received
             commit('setError', error.message);
           });
@@ -36,11 +36,13 @@ const createStore = () => {
           // Save it
           commit('changeAgencies', agencies.data);
         }
-      }
+      },
     },
     getters: {
-      error: state => state.error
-    }
+      error: (state) => {
+        return state.error;
+      },
+    },
   });
 };
 

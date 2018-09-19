@@ -3,4 +3,3 @@
 ./.nuxt/*
 /test
 /store
-nuxt.config.js

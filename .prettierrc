@@ -3,5 +3,6 @@
   "singleQuote": true,
   "arrowParens": "always",
   "noUnusedVar": "false",
-  "noUnneededTernary": 0
+  "noUnneededTernary": 0,
+  "trailingComma": "all"
 }
