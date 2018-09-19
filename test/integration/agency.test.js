@@ -2,14 +2,14 @@ import test from 'ava';
 import { Nuxt, Builder } from 'nuxt';
 import { resolve } from 'path';
 
-// Handles tests related to /agencies/{agency}
+// INTEGRATION TESTS FOR /agencies/{agency}
 
 let nuxt = null;
 let agencyPage = null;
 
 // Init Nuxt.js and start listening on localhost:3000
 test.before('Init Nuxt.js', async () => {
-  const rootDir = resolve(__dirname, '..');
+  const rootDir = resolve(__dirname, '../..');
   let config = {};
   config = require(resolve(rootDir, 'nuxt.config.js'));
   config.rootDir = rootDir; // project folder

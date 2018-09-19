@@ -2,18 +2,13 @@ import test from 'ava';
 import { Nuxt, Builder } from 'nuxt';
 import { resolve } from 'path';
 
-// PURPOSE OF E2E TESTING: exercise a complete production-like scenario.
+// INTEGRATION TESTS FOR THE INDEX
 
-// We keep a reference to Nuxt so we can close
-// the server at the end of the test
 let nuxt = null;
-
-// Reference of our windows being tested
 let homePage = null;
 
-// Init Nuxt.js and start listening on localhost:3000
 test.before('Init Nuxt.js', async () => {
-  const rootDir = resolve(__dirname, '..');
+  const rootDir = resolve(__dirname, '../..');
   let config = {};
   config = require(resolve(rootDir, 'nuxt.config.js'));
   config.rootDir = rootDir; // project folder
@@ -25,7 +20,6 @@ test.before('Init Nuxt.js', async () => {
   homePage = await nuxt.renderAndGetWindow('http://localhost:3001/');
 });
 
-// Close the nuxt instance once we finish our testing
 test.after('Close Nuxt.js', async () => {
   nuxt.close();
 });

@@ -2,13 +2,13 @@ import test from 'ava';
 import { Nuxt, Builder } from 'nuxt';
 import { resolve } from 'path';
 
+// INTEGRATION TESTS FOR THE ERROR PAGE
+
 let nuxt = null;
 let errorPage = null;
 
-// Init Nuxt.js and start listening on localhost:3002
-// Init Nuxt.js with the wrong API URL to reach an error page
 test.before('Init Nuxt.js', async () => {
-  const rootDir = resolve(__dirname, '..');
+  const rootDir = resolve(__dirname, '../..');
   let config = {};
   config = require(resolve(rootDir, 'nuxt.config.js'));
   config.rootDir = rootDir; // project folder
