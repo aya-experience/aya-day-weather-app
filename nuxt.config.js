@@ -57,7 +57,7 @@ module.exports = {
   env: {
     isDev: config.isDev, // True if we are in dev mode, false otherwise
     baseUrl_dev: 'http://localhost:8080', // API URL used in dev
-    baseUrl: '' // Define production API URL
+    baseUrl: 'http://localhost:8080' // Define production API URL
   },
 
   router: {
