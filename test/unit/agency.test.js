@@ -5,7 +5,6 @@ import { resolve } from 'path';
 // UNIT TESTS FOR THE AGENCY COMPONENT
 
 let nuxt = null;
-let homePage = null;
 
 test.before('Init Nuxt.js', async () => {
   const rootDir = resolve(__dirname, '../..');
@@ -17,7 +16,6 @@ test.before('Init Nuxt.js', async () => {
   nuxt = new Nuxt(config);
   await new Builder(nuxt).build();
   nuxt.listen(3005, 'localhost');
-  homePage = await nuxt.renderAndGetWindow('http://localhost:3005/');
 });
 
 test.after('Close Nuxt.js', async () => {
