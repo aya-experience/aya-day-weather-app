@@ -339,35 +339,66 @@ h1 {
   width: 25%;
 }
 
-/* Smartphones (portrait) ----------- */
+/* Tablets (portrait) ----------- */
 
-@media only screen and (max-width: 320px) {
+@media only screen and (max-width: 868px) {
   h1 {
     margin-bottom: 16px;
-    font-size: 20px;
+    font-size: 2.5em;
   }
+
   .top p {
-    font-size: 15px;
-    line-height: 20px;
+    font-size: 1.5em;
   }
+
   .winnerAgency-desc {
-    font-size: 15px;
+    font-size: 1.25em;
     line-height: 20px;
+    text-align: left;
   }
+
   .winnerAgency {
     width: 90vw;
-    bottom: 2vh;
+    bottom: 10vh;
     right: 5vw;
   }
+
   .winnerAgency-card {
     width: 100vw;
     height: 22vh;
     position: relative;
   }
+
+  .agencies {
+    flex-direction: column;
+    height: auto;
+    padding: 15px 0 15px 0;
+  }
+
+  .winnerAgency-card img.winnerAgency-card-king {
+    top: -40px;
+    right: -10px;
+    width: 60px;
+    height: 75px;
+  }
 }
 
-/* iPads (portrait) ----------- */
+/* Smartphones (portrait) ----------- */
 
-@media only screen and (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) {
+@media only screen and (max-width: 468px) {
+  h1 {
+    margin-bottom: 16px;
+    font-size: 1.8em;
+    line-height: 35px;
+  }
+
+  .top p {
+    font-size: 1.25em;
+    line-height: 30px;
+  }
+
+  .winnerAgency-desc {
+    font-size: 1em;
+  }
 }
 </style>
