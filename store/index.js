@@ -20,24 +20,6 @@ const createStore = () => {
         state.error = error;
       },
     },
-    actions: {
-      async nuxtServerInit({ commit }) {
-        const agencies = await axios
-          .get(API_URL, {
-            headers: { 'Access-Control-Allow-Origin': '*' },
-          })
-          .catch((error) => {
-            // API is unreachable, set the error message we received
-            commit('setError', error.message);
-          });
-
-        // Check if data was returned by the API
-        if (agencies != null) {
-          // Save it
-          commit('changeAgencies', agencies.data);
-        }
-      },
-    },
     getters: {
       error: (state) => {
         return state.error;
