@@ -13,6 +13,7 @@ before_script:
   - npm run lint
   - git clone https://github.com/aya-experience/aya-day-weather-proxy.git
   - cd aya-day-weather-proxy
+  - npm install
   - API_KEY=$API_KEY node index.js &
   - cd ..
   - npm install
