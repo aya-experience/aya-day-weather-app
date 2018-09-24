@@ -1,8 +1,4 @@
-import axios from 'axios';
 import Vuex from 'vuex';
-
-// localhost URL in dev otherwise prod URL
-const API_URL = process.env.isDev ? process.env.baseUrl_dev : process.env.baseUrl;
 
 const createStore = () => {
   return new Vuex.Store({
