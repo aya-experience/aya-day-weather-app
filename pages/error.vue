@@ -35,7 +35,7 @@ export default {
 h1 {
   margin-bottom: 16px;
   font-family: Lato;
-  font-size: 50px;
+  font-size: 3.5em;
   font-weight: 300;
   line-height: 84px;
 }
@@ -53,6 +53,31 @@ h1 {
 .error-details > span {
   font-size: 0.75em;
   opacity: 0.5;
+}
+
+@media only screen and (max-width: 868px) {
+  h1 {
+    font-size: 2em;
+    margin-bottom: 50px;
+    line-height: 50px;
+  }
+
+  .top p {
+    font-size: 1.5em;
+    line-height: 39px;
+  }
+}
+
+@media only screen and (max-width: 468px) {
+  h1 {
+    font-size: 1.5em;
+    line-height: 25px;
+  }
+
+  .top p {
+    font-size: 1.25em;
+    line-height: 25px;
+  }
 }
 </style>
 

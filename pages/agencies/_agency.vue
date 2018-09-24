@@ -11,7 +11,7 @@
       <span>{{toCelcius(agency.weather.daily.data[0].temperatureHigh)}}°</span>
     </div>
     <h1>{{agency.name}}</h1>
-           <h2>{{toCelcius(agency.weather.currently.temperature)}}°</h2>
+    <h2>{{toCelcius(agency.weather.currently.temperature)}}°</h2>
 
     <img class="weather" :src="weatherIllustrationMapper[agency.weather.currently.icon]" />
 
@@ -128,7 +128,7 @@ section {
 
 .top span {
   font-family: 'Lato', sans-serif;
-  font-size: 3vw;
+  font-size: 2.8em;
   font-weight: 300;
   animation: 4s 1 fadeIn ease;
 }
@@ -166,7 +166,7 @@ h1 {
 
 h2 {
   font-family: 'Lato', sans-serif;
-  font-size: 8vw;
+  font-size: 3.5em;
   font-weight: 300;
   margin-top: 2vh;
   text-align: center;
