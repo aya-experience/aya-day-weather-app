@@ -8,12 +8,12 @@
             Pour connaître la meilleure météo <br/> aujourd’hui parmi les agences Zenika.
           </p>
         </section>
-  
+
         <section class="winnerAgency">
           <p class="winnerAgency-desc">
             Tout le monde le sait : la météo joue sur l’humeur.<br/> Et chez Zenika, nous prenons en considération<br/> l’humeur de nos collaborateurs.
           </p>
-  
+
           <article class="winnerAgency-card">
             <section class="winnerAgency-data">
               <h2>{{winnerAgency.name}}</h2>
@@ -22,11 +22,11 @@
                 <img :src="weatherIllustrationMapper[winnerAgency.weather.currently.icon]" :alt="winnerAgency.weather.currently.summary">
               </div>
             </section>
-            <img src="/couronne@svg.svg" class="winnerAgency-card-king" alt="winner">
+            <img src="~/static/couronne@svg.svg" class="winnerAgency-card-king" alt="winner">
           </article>
         </section>
       </section>
-  
+
       <section class="agencies">
         <article v-for="agency in otherAgencies" :key="agency.name">
           <nuxt-link :to="`/agencies/${agency.name}`" class="agency">
@@ -37,7 +37,7 @@
         </article>
       </section>
     </section>
-  
+
     <!-- Only displayed when the API could not be reached -->
     <section class="wrapper-error" v-else>
       <Error/>
