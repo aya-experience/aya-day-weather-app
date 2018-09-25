@@ -1,19 +1,15 @@
 {
+  "root": true,
   "env": {
     "browser": true,
     "es6": true,
-    "node": true
+    "node": true,
+    "jest": true
   },
   "parserOptions": {
     "parser": "babel-eslint"
   },
   "plugins": ["html"],
-  "extends": ["airbnb-base", "plugin:vue/essential"],
-  "rules": {
-    "arrow-body-style": 0,
-    "global-require": 0,
-    "import/no-dynamic-require": 0,
-    "import/no-extraneous-dependencies": 0,
-    "no-param-reassign": 0
-  }
+  "extends": ["airbnb-base", "plugin:vue/recommended", "prettier"],
+  "rules": {}
 }

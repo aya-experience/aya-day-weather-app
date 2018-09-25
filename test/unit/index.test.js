@@ -1,27 +1,82 @@
-import test from 'ava';
-import { Nuxt, Builder } from 'nuxt';
-import { resolve } from 'path';
+import Vuex from 'vuex';
+import { shallowMount, createLocalVue } from '@vue/test-utils';
+import { createMocks as createStoreMocks } from '../../store/__mock__/index';
+import NuxtLink from '../../.nuxt/components/nuxt-link';
+import Index from '../../pages/index.vue';
 
-// UNIT TESTS FOR THE INDEX COMPONENT
+// Unit tests for Index.vue
 
-let nuxt = null;
+jest.mock('../../store');
 
-test.before('Init Nuxt.js', async () => {
-  const rootDir = resolve(__dirname, '../..');
-  let config = {};
-  config = require(resolve(rootDir, 'nuxt.config.js'));
-  config.rootDir = rootDir; // project folder
-  config.env.isDev = true; // dev build
-  config.mode = 'universal'; // Isomorphic application
-  nuxt = new Nuxt(config);
-  await new Builder(nuxt).build();
-  nuxt.listen(3004, 'localhost');
-});
+const localVue = createLocalVue();
+localVue.use(Vuex);
 
-test.after('Close Nuxt.js', async () => {
-  nuxt.close();
-});
+Index.components.NuxtLink = NuxtLink;
 
-test('[TEST] should be true', async (t) => {
-  t.is(true, true);
+describe('[UNIT] Index.test.js', () => {
+  let storeMock;
+  let wrapper;
+  let $route;
+
+  beforeEach(() => {
+    storeMock = createStoreMocks();
+    $route = {
+      name: '/agencies/Paris',
+    };
+    wrapper = shallowMount(Index, {
+      store: storeMock.store,
+      localVue,
+      $route,
+      methods: {
+        toCelcius(f) {
+          return Math.round((f - 32) / 1.8);
+        },
+      },
+      data() {
+        return {
+          weatherIllustrationMapper: {
+            snow: 'neige@1x.png',
+          },
+        };
+      },
+    });
+  });
+
+  it('renders a vue instance', () => {
+    expect(wrapper.isVueInstance()).toBe(true);
+  });
+
+  it('should have 8 agencies in the store', () => {
+    expect(storeMock.state.agencies.length).toBe(9);
+  });
+
+  it('should have an agency named Paris', () => {
+    expect(storeMock.state.agencies.filter(a => a.name === 'Paris')).not.toBe(null);
+  });
+
+  it('should have an empty error message', () => {
+    expect(storeMock.state.error).toBe('');
+  });
+
+  it('should have a valid error message returned by the getter', () => {
+    expect(storeMock.getters.error()).toBe('Error message');
+  });
+
+  it('should return a valid temperature after conversion', () => {
+    expect(wrapper.vm.toCelcius(32)).toBe(0);
+  });
+
+  it('should return a valid winner agency', () => {
+    expect(wrapper.vm.winnerAgency.name).not.toBe('');
+  });
+
+  it('should return a valid list of other agencies', () => {
+    expect(wrapper.vm.otherAgencies.length).toBe(8);
+  });
+
+  it('should return a valid weather icon', () => {
+    expect(
+      wrapper.vm.weatherIllustrationMapper[wrapper.vm.winnerAgency.weather.currently.icon],
+    ).toBe('neige@1x.png');
+  });
 });

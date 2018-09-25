@@ -94,7 +94,7 @@ export default {
       .get(API_URL, {
         headers: { 'Access-Control-Allow-Origin': '*' },
       })
-      .catch((error) => {
+      .catch(error => {
         // API is unreachable, set the error message we received
         store.commit('setError', error.message);
       });

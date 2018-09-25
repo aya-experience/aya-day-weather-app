@@ -5,22 +5,18 @@ cache:
   directories:
     - 'node_modules'
 
-branches:
-  only:
-    - master
-
 before_script:
+  - npm run build
   - npm run lint
   - git clone https://github.com/aya-experience/aya-day-weather-proxy.git
   - cd aya-day-weather-proxy
-  - npm install
+  - npm ci
   - API_KEY=$API_KEY node index.js &
   - cd ..
-  - npm install
   - npm run generate
 
-script:
-  - echo "Skipping tests"
+notifications:
+  email: false
 
 deploy:
   provider: pages
