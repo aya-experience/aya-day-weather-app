@@ -8,7 +8,7 @@
           <nuxt-link :to="nextUrl"><rightArrow /></nuxt-link>
         </div>
       </nav>
-      <span>{{toCelcius(agency.weather.daily.data[0].temperatureHigh)}}°</span>
+      <span class="temperature">{{toCelcius(agency.weather.daily.data[0].temperatureHigh)}}°</span>
     </div>
     <h1>{{agency.name}}</h1>
     <h2>{{toCelcius(agency.weather.currently.temperature)}}°</h2>
@@ -46,19 +46,19 @@ export default {
       'partly-cloudy-night': 'background: linear-gradient(90deg, #70E1F5 0%, #FFD194 100%)',
     },
     weatherIllustrationMapper: {
-      'clear-day': '/sun@1x.png',
-      'clear-night': '/sun@1x.png',
-      rain: '/pluie@1x.png',
-      snow: '/neige@1x.png',
-      sleet: '/neige@1x.png',
-      wind: '/orage@1x.png',
-      hail: '/neige@1x.png',
-      thunderstorm: '/orage@1x.png',
-      tornado: '/orage@1x.png',
-      fog: '/nuageux@1x.png',
-      cloudy: '/nuageux@1x.png',
-      'partly-cloudy-day': '/eclairci@1x.png',
-      'partly-cloudy-night': '/eclairci@1x.png',
+      'clear-day': 'sun@1x.png',
+      'clear-night': 'sun@1x.png',
+      rain: 'pluie@1x.png',
+      snow: 'neige@1x.png',
+      sleet: 'neige@1x.png',
+      wind: 'orage@1x.png',
+      hail: 'neige@1x.png',
+      thunderstorm: 'orage@1x.png',
+      tornado: 'orage@1x.png',
+      fog: 'nuageux@1x.png',
+      cloudy: 'nuageux@1x.png',
+      'partly-cloudy-day': 'eclairci@1x.png',
+      'partly-cloudy-night': 'eclairci@1x.png',
     },
   }),
   components: {
