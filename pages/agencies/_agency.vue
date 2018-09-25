@@ -4,8 +4,12 @@
       <span>{{toCelcius(agency.weather.daily.data[0].temperatureLow)}}°</span>
       <nav>
         <div>
-          <nuxt-link :to="previousUrl"><leftArrow /></nuxt-link>
-          <nuxt-link :to="nextUrl"><rightArrow /></nuxt-link>
+          <nuxt-link :to="previousUrl">
+            <img src="~/assets/left_arrow.svg"/>
+          </nuxt-link>
+          <nuxt-link :to="nextUrl">
+            <img src="~/assets/right_arrow.svg"/>
+          </nuxt-link>
         </div>
       </nav>
       <span class="temperature">{{toCelcius(agency.weather.daily.data[0].temperatureHigh)}}°</span>
@@ -16,7 +20,7 @@
     <img class="weather" :src="weatherIllustrationMapper[agency.weather.currently.icon]" />
 
     <div class="tree">
-      <tree />
+      <Tree/>
     </div>
 
     <nuxt-link class="back-to-home" to="/">Back to home</nuxt-link>
@@ -24,9 +28,7 @@
 </template>
 
 <script>
-import tree from '../../components/tree.vue';
-import leftArrow from '../../components/left_arrow.vue';
-import rightArrow from '../../components/right_arrow.vue';
+import Tree from '../../components/tree.vue';
 
 export default {
   data: () => ({
@@ -60,11 +62,10 @@ export default {
       'partly-cloudy-day': 'eclairci@1x.png',
       'partly-cloudy-night': 'eclairci@1x.png',
     },
+    tree: Tree,
   }),
   components: {
-    tree,
-    leftArrow,
-    rightArrow,
+    Tree,
   },
   computed: {
     agency() {
@@ -144,7 +145,7 @@ nav a {
   animation: 4s 1 fadeIn ease;
 }
 
-nav svg {
+nav img {
   display: block;
   height: 100%;
   width: auto;
