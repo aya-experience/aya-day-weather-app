@@ -1,7 +1,7 @@
 {
   "name": "aya-day-weather-app",
   "version": "1.0.0",
-  "description": "Nuxt.js project",
+  "description": "Aya Weather App",
   "author": "l-bonanni <laetitia.bonanni@zenika.com>",
   "private": true,
   "scripts": {
@@ -9,12 +9,12 @@
     "build": "NODE_ENV='production' nuxt build",
     "start": "NODE_ENV='production' nuxt start",
     "generate": "NODE_ENV='gh_pages' nuxt generate",
-    "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
-    "precommit": "npm run lint",
-    "test": "ava test/*/*.test.js"
-  },
-  "ava": {
-    "verbose": true
+    "prettier": "prettier --write ./**/*.js ./**/*.vue",
+    "lint": "eslint --ext .js,.vue .",
+    "test": "npm run unit && npm run integration",
+    "unit": "jest --ci --runInBand test/unit/*.test.js",
+    "integration": "jest --ci --runInBand --forceExit test/integration/*.test.js",
+    "tdd": "jest --watch test/**/*.test.js"
   },
   "dependencies": {
     "axios": "^0.18.0",
@@ -23,15 +23,18 @@
   "devDependencies": {
     "@babel/core": "^7.0.1",
     "@vue/test-utils": "^1.0.0-beta.25",
-    "ava": "^0.25.0",
     "babel-eslint": "^9.0.0",
-    "eslint": "^5.6.0",
+    "babel-jest": "^23.6.0",
+    "eslint": "^5.6.1",
     "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-config-prettier": "^3.1.0",
     "eslint-friendly-formatter": "^4.0.1",
     "eslint-loader": "^2.1.0",
     "eslint-plugin-html": "^4.0.5",
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-vue": "^4.0.0",
+    "jest": "^23.6.0",
+    "jest-vue-preprocessor": "^1.4.0",
     "jsdom": "^12.0.0",
     "prettier": "^1.14.2"
   }

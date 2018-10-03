@@ -1,8 +1,7 @@
 {
   "printWidth": 100,
   "singleQuote": true,
-  "arrowParens": "always",
-  "noUnusedVar": "false",
-  "noUnneededTernary": 0,
-  "trailingComma": "all"
+  "arrowParens": "avoid",
+  "trailingComma": "all",
+  "tabWidth": 2
 }
