@@ -1,3 +1,5 @@
+const config = require('config');
+
 module.exports = {
   /*
   ** Headers of the page
@@ -27,7 +29,7 @@ module.exports = {
   },
   modules: ['@nuxtjs/axios'],
   axios: {
-    baseURL: 'http://localhost:8080',
+    baseURL: config.serviceUrl,
   },
   /*
   ** Customize the progress bar color
@@ -40,9 +42,9 @@ module.exports = {
     /*
     ** Run ESLint on save
     */
-    extend(config, { isDev, isClient }) {
+    extend(conf, { isDev, isClient }) {
       if (isDev && isClient) {
-        config.module.rules.push({
+        conf.module.rules.push({
           enforce: 'pre',
           test: /\.(js|vue)$/,
           loader: 'eslint-loader',

@@ -6,14 +6,14 @@ cache:
     - 'node_modules'
 
 before_script:
-  - npm run build
+  - NODE_ENV=production npm run build
   - npm run lint
   - git clone https://github.com/aya-experience/aya-day-weather-proxy.git
   - cd aya-day-weather-proxy
   - npm ci
   - API_KEY=$API_KEY node index.js &
   - cd ..
-  - npm run generate
+  - NODE_ENV=production npm run generate
 
 notifications:
   email: false
