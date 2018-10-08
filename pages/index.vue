@@ -49,7 +49,7 @@
 import axios from 'axios';
 import Error from './error';
 
-const API_URL = process.env.isDev ? process.env.baseUrl_dev : process.env.baseUrl;
+const API_URL = process.env.baseUrl;
 
 export default {
   name: 'Index',

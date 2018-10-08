@@ -1,10 +1,3 @@
-const configs = {
-  // True when in dev mode
-  isDev: process.env.NODE_ENV === 'dev',
-  // Changes the website's base to work on Github pages
-  routerBase: process.env.NODE_ENV === 'gh_pages' ? '/aya-day-weather-app/' : '/',
-};
-
 module.exports = {
   /*
   ** Headers of the page
@@ -52,12 +45,6 @@ module.exports = {
   },
 
   env: {
-    isDev: configs.isDev, // True if we are in dev mode, false otherwise
-    baseUrl_dev: 'http://localhost:8080', // API URL used in dev
     baseUrl: 'http://localhost:8080', // Define production API URL
-  },
-
-  router: {
-    base: configs.routerBase,
   },
 };
