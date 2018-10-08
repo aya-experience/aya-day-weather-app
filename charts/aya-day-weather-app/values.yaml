@@ -3,8 +3,8 @@
 # Declare variables to be passed into your templates.
 replicaCount: 1
 image:
-  repository: draft
-  tag: dev
+  repository: 301517625970.dkr.ecr.eu-west-3.amazonaws.com/aya-experience/aya-day-weather-app
+  tag: 0.0.1
   pullPolicy: IfNotPresent
 service:
   name: aya-day-weather-app
