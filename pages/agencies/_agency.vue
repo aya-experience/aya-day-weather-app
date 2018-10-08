@@ -48,19 +48,19 @@ export default {
       'partly-cloudy-night': 'background: linear-gradient(90deg, #70E1F5 0%, #FFD194 100%)',
     },
     weatherIllustrationMapper: {
-      'clear-day': 'sun@1x.png',
-      'clear-night': 'sun@1x.png',
-      rain: 'pluie@1x.png',
-      snow: 'neige@1x.png',
-      sleet: 'neige@1x.png',
-      wind: 'orage@1x.png',
-      hail: 'neige@1x.png',
-      thunderstorm: 'orage@1x.png',
-      tornado: 'orage@1x.png',
-      fog: 'nuageux@1x.png',
-      cloudy: 'nuageux@1x.png',
-      'partly-cloudy-day': 'eclairci@1x.png',
-      'partly-cloudy-night': 'eclairci@1x.png',
+      'clear-day': '/sun@1x.png',
+      'clear-night': '/sun@1x.png',
+      rain: '/pluie@1x.png',
+      snow: '/neige@1x.png',
+      sleet: '/neige@1x.png',
+      wind: '/orage@1x.png',
+      hail: '/neige@1x.png',
+      thunderstorm: '/orage@1x.png',
+      tornado: '/orage@1x.png',
+      fog: '/nuageux@1x.png',
+      cloudy: '/nuageux@1x.png',
+      'partly-cloudy-day': '/eclairci@1x.png',
+      'partly-cloudy-night': '/eclairci@1x.png',
     },
     tree: Tree,
   }),
@@ -69,11 +69,11 @@ export default {
   },
   computed: {
     agency() {
-      return this.$store.state.agencies.find((agency) => agency.name === this.$route.params.agency);
+      return this.$store.state.agencies.find(agency => agency.name === this.$route.params.agency);
     },
     previousUrl() {
       const currentIndex = this.$store.state.agencies.findIndex(
-        (agency) => agency.name === this.$route.params.agency,
+        agency => agency.name === this.$route.params.agency,
       );
       const previousIndex =
         currentIndex - 1 < 0 ? this.$store.state.agencies.length - 1 : currentIndex - 1;
@@ -81,7 +81,7 @@ export default {
     },
     nextUrl() {
       const currentIndex = this.$store.state.agencies.findIndex(
-        (agency) => agency.name === this.$route.params.agency,
+        agency => agency.name === this.$route.params.agency,
       );
       const nextIndex =
         currentIndex + 1 >= this.$store.state.agencies.length ? 0 : currentIndex + 1;
