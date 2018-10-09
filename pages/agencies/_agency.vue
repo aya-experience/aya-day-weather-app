@@ -1,7 +1,7 @@
 <template>
   <section :style="weatherGradientMapper[agency.weather.currently.icon]">
     <div class="top">
-      <span>{{toCelcius(agency.weather.daily.data[0].temperatureLow)}}°</span>
+      <span>{{temperature}}°</span>
       <nav>
         <div>
           <nuxt-link :to="previousUrl">
@@ -87,11 +87,17 @@ export default {
         currentIndex + 1 >= this.$store.state.agencies.length ? 0 : currentIndex + 1;
       return `/agencies/${this.$store.state.agencies[nextIndex].name}`;
     },
+    temperature() {
+      return this.toCelcius(this.agency.weather.daily.data[0].temperatureLow);
+    },
   },
   methods: {
     toCelcius(f) {
       return Math.round((f - 32) / 1.8);
     },
+  },
+  async fetch({ store, params }) {
+    await store.dispatch('getAgencies');
   },
 };
 </script>

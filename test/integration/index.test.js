@@ -12,7 +12,6 @@ config = require('../../nuxt.config');
 
 describe('[INTEGRATION] Index.test.js', () => {
   beforeAll(async () => {
-    config.env.isDev = false; // dev build
     nuxt = new Nuxt(config);
     await new Builder(nuxt).build();
     await nuxt.listen(3000, 'localhost');

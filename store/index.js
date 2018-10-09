@@ -20,6 +20,21 @@ const createStore = () =>
     getters: {
       error: state => state.error,
     },
+    actions: {
+      async getAgencies({ commit }) {
+        const agencies = await this.$axios
+          .$get('/', {
+            headers: { 'Access-Control-Allow-Origin': '*' },
+          })
+          .catch(error => {
+            commit('setError', error.message);
+          });
+
+        if (agencies !== null && typeof agencies !== 'undefined') {
+          commit('changeAgencies', agencies);
+        }
+      },
+    },
   });
 
 export default createStore;

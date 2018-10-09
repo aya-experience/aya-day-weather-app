@@ -21,6 +21,10 @@ module.exports = {
       },
     ],
   },
+  modules: ['@nuxtjs/axios'],
+  axios: {
+    baseURL: 'http://localhost:8080',
+  },
   /*
   ** Customize the progress bar color
   */
@@ -44,7 +48,18 @@ module.exports = {
     },
   },
 
-  env: {
-    baseUrl: 'http://localhost:8080', // Define production API URL
+  /* TODO: uniformiser quand merge avec le serveur */
+  generate: {
+    routes: [
+      '/agencies/Paris',
+      '/agencies/Rennes',
+      '/agencies/Singapour',
+      '/agencies/Lille',
+      '/agencies/Lyon',
+      '/agencies/Grenoble',
+      '/agencies/Montréal',
+      '/agencies/Bordeaux',
+      '/agencies/Nantes',
+    ],
   },
 };

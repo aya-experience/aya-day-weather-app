@@ -90,20 +90,7 @@ export default {
     Error,
   },
   async fetch({ store, params }) {
-    const agencies = await axios
-      .get(API_URL, {
-        headers: { 'Access-Control-Allow-Origin': '*' },
-      })
-      .catch(error => {
-        // API is unreachable, set the error message we received
-        store.commit('setError', error.message);
-      });
-
-    // Check if data was returned by the API
-    if (agencies != null) {
-      // Save it
-      store.commit('changeAgencies', agencies.data);
-    }
+    await store.dispatch('getAgencies');
   },
 };
 </script>

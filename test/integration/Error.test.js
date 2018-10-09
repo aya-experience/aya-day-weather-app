@@ -12,8 +12,7 @@ config = require('../../nuxt.config');
 
 describe('[INTEGRATION] Error.test.js', () => {
   beforeAll(async () => {
-    config.env.isDev = false; // dev build
-    config.env.baseUrl = ''; // Set a false API URL
+    config.axios.baseURL = 'http://localhost:8081';
     nuxt = new Nuxt(config);
     await new Builder(nuxt).build();
     await nuxt.listen(3001, 'localhost');
