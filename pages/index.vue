@@ -56,19 +56,19 @@ export default {
   data() {
     return {
       weatherIllustrationMapper: {
-        'clear-day': 'sun@1x.png',
-        'clear-night': 'sun@1x.png',
-        rain: 'pluie@1x.png',
-        snow: 'neige@1x.png',
-        sleet: 'neige@1x.png',
-        wind: 'orage@1x.png',
-        hail: 'neige@1x.png',
-        thunderstorm: 'orage@1x.png',
-        tornado: 'orage@1x.png',
-        fog: 'nuageux@1x.png',
-        cloudy: 'nuageux@1x.png',
-        'partly-cloudy-day': 'eclairci@1x.png',
-        'partly-cloudy-night': 'eclairci@1x.png',
+        'clear-day': '/sun@1x.png',
+        'clear-night': '/sun@1x.png',
+        rain: '/pluie@1x.png',
+        snow: '/neige@1x.png',
+        sleet: '/neige@1x.png',
+        wind: '/orage@1x.png',
+        hail: '/neige@1x.png',
+        thunderstorm: '/orage@1x.png',
+        tornado: '/orage@1x.png',
+        fog: '/nuageux@1x.png',
+        cloudy: '/nuageux@1x.png',
+        'partly-cloudy-day': '/eclairci@1x.png',
+        'partly-cloudy-night': '/eclairci@1x.png',
       },
     };
   },
@@ -90,20 +90,7 @@ export default {
     Error,
   },
   async fetch({ store, params }) {
-    const agencies = await axios
-      .get(API_URL, {
-        headers: { 'Access-Control-Allow-Origin': '*' },
-      })
-      .catch(error => {
-        // API is unreachable, set the error message we received
-        store.commit('setError', error.message);
-      });
-
-    // Check if data was returned by the API
-    if (agencies != null) {
-      // Save it
-      store.commit('changeAgencies', agencies.data);
-    }
+    await store.dispatch('getAgencies');
   },
 };
 </script>
