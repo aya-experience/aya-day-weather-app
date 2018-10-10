@@ -21,7 +21,12 @@ const createStore = () =>
       error: state => state.error,
     },
     actions: {
-      async getAgencies({ commit }) {
+      async getAgencies({ commit, state }) {
+        /* Checks if we already have a list of agencies, if so, don't do an API call */
+        if (state.agencies.length > 0) {
+          return;
+        }
+
         const agencies = await this.$axios
           .$get('/', {
             headers: { 'Access-Control-Allow-Origin': '*' },
