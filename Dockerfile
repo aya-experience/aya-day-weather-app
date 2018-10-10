@@ -1,4 +1,4 @@
-FROM node:9-slim
+FROM node:9-alpine
 
 ENV HOST=0.0.0.0
 
@@ -8,7 +8,8 @@ EXPOSE 3000
 WORKDIR /usr/src/app
 COPY . .
 
-RUN npm install
-RUN npm build
+ENV NODE_ENV=container
 
-CMD ["npm", "start"]
+RUN npm run build
+RUN npm prune
+CMD npm start
