@@ -18,9 +18,10 @@
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.3.3",
-    "config": "^2.0.1",
     "axios": "^0.18.0",
-    "nuxt": "^1.4.2"
+    "config": "^2.0.1",
+    "nuxt": "^1.4.2",
+    "nuxt-healthcheck": "^1.0.1"
   },
   "devDependencies": {
     "@babel/core": "^7.0.1",
