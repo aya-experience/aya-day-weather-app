@@ -34,6 +34,11 @@ module.exports = {
   axios: {
     baseURL: config.serviceUrl,
   },
+  healthcheck: {
+    path: '/health',
+    contentType: 'application/json',
+    healthy: () => 'Healthy'
+  },
   /*
   ** Customize the progress bar color
   */
