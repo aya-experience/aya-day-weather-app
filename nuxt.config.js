@@ -27,7 +27,10 @@ module.exports = {
       },
     ],
   },
-  modules: ['@nuxtjs/axios'],
+  modules: [
+    'nuxt-healthcheck',
+    '@nuxtjs/axios'
+  ],
   axios: {
     baseURL: config.serviceUrl,
   },
