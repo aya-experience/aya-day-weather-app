@@ -20,7 +20,7 @@
     "@nuxtjs/axios": "^5.3.3",
     "axios": "^0.18.0",
     "config": "^2.0.1",
-    "nuxt": "^1.4.2",
+    "nuxt": "^2.15.8",
     "nuxt-healthcheck": "^1.0.1"
   },
   "devDependencies": {
